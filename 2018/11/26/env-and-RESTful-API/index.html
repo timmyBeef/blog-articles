@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="1oh3VluWAkI2CDranTPnxXgiWq6n6JqXrfhMjIO2yXY">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TimmyBeef&#39;s Blog">
+    <meta name="keyword" content="TimmyBeef&#39;s Blog">
+    <link rel="shortcut icon" href="/img/b_letter.jpg">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          舊專案必學技術整理 - 開發環境設定 &amp; 前後端溝通(RESTful API)  - TimmyBeef&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://timmybeef.github.io/2018/11/26/env-and-RESTful-API/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/header_img/archive-bg.png')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/signature5c48060491c81.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#AngularJS" title="AngularJS">AngularJS</a>
+                            
+                              <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                            
+                              <a class="tag" href="/tags/#Eclipse" title="Eclipse">Eclipse</a>
+                            
+                              <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
+                            
+                              <a class="tag" href="/tags/#Maven" title="Maven">Maven</a>
+                            
+                              <a class="tag" href="/tags/#JBoss" title="JBoss">JBoss</a>
+                            
+                        </div>
+                        <h1>舊專案必學技術整理 - 開發環境設定 &amp; 前後端溝通(RESTful API) </h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Tim Lin on
+                            2018-11-26
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">TimmyBeef&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="開發環境設置">開發環境設置</span></h1>
+<p><strong>本案開發工具:</strong><br>
+cultivator-20140508-1145-x86_64 <strong>(based on Eclipse)</strong><br>
+jboss-eap-6.1</p>
+<h2><span id="maven-是什麼">maven 是什麼?</span></h2>
+<ul>
+<li>maven
+<ul>
+<li>透過 pom.xml 來定義和管理 java jar lib</li>
+</ul>
+</li>
+<li>nexus server
+<ul>
+<li>取得 jar 的 repository server</li>
+</ul>
+</li>
+<li>JBoss
+<ul>
+<li>本案中執行 war 的 ap server</li>
+</ul>
+</li>
+</ul>
+<p><strong>把我準備好的 nta_m2 放在想放的位置</strong><br>
+<strong>打開 eclipse</strong><br>
+<strong>每次打開 都會要求選 workspace</strong><br>
+<img src="https://i.imgur.com/FciOQ0p.png" alt=""></p>
+<h2><span id="每次選一個-新-的-workspace-後-請做這些事">每次選一個 “新” 的 workspace 後, 請做這些事</span></h2>
+<h2><span id="設定-maven-設定檔">設定 maven 設定檔</span></h2>
+<p><strong>Windows -&gt; Preferences</strong><br>
+<img src="https://i.imgur.com/H67TPla.png" alt=""></p>
+<p><strong>左上搜尋 settings</strong><br>
+<img src="https://i.imgur.com/T7cca2i.png" alt=""></p>
+<p><strong>指定 nta_m2 下面的 settings.xml</strong><br>
+<img src="https://i.imgur.com/vWz6hqK.png" alt=""></p>
+<p><strong>把 nexus 的 ip 換成本地的</strong><br>
+<strong>把指定 repository 換成目前 nta_m2 的位置</strong><br>
+<img src="https://i.imgur.com/kVo4eQv.png" alt=""></p>
+<p><strong>為什麼開新 workspace 要做以上事情?</strong></p>
+<p><img src="https://i.imgur.com/Ja47Cti.png" alt=""></p>
+<p><strong>因為每次一匯入新專案或一進入 eclipse 就會做 build automatically, 如果沒有設定好,等等匯入專案後會一堆錯誤而且很慢, 而且還要重跑</strong></p>
+<hr>
+<h2><span id="匯入專案-nta-app-sample">匯入專案 (nta-app-sample)</span></h2>
+<p><strong>匯入前, 觀察一下原本專案…, 很乾淨</strong><br>
+<img src="https://i.imgur.com/UyjUQqS.png" alt=""></p>
+<p><img src="https://i.imgur.com/eGIKLG4.png" alt=""><br>
+<img src="https://i.imgur.com/j9lS39r.png" alt=""><br>
+<img src="https://i.imgur.com/LDwEnAm.png" alt=""></p>
+<p><strong>正在匯入了</strong><br>
+<img src="https://i.imgur.com/qpwrlzG.png" alt=""></p>
+<p><strong>然後因為有開啟 build automatically, 所以會開始 build project</strong><br>
+<img src="https://i.imgur.com/PsrSosx.png" alt=""></p>
+<p><img src="https://i.imgur.com/GzPU**Or4.png" alt=""><br>
+<strong>使用 maven update</strong></p>
+<p><img src="https://i.imgur.com/ss2haAX.png" alt=""><br>
+<img src="https://i.imgur.com/6da5v6O.png" alt=""></p>
+<p><strong>在更新…</strong><br>
+<img src="https://i.imgur.com/CrDxkSc.png" alt=""><br>
+<strong>完成!</strong><br>
+<img src="https://i.imgur.com/kuUxQk9.png" alt=""></p>
+<p><strong>看專案多了什麼東西</strong><br>
+匯入前:<br>
+<img src="https://i.imgur.com/UyjUQqS.png" alt=""><br>
+匯入後:<br>
+<img src="https://i.imgur.com/Wf7RUEn.png" alt=""></p>
+<h3><span id="eclipse-view-的新增">Eclipse view 的新增</span></h3>
+<p><img src="https://i.imgur.com/rE2N0PV.png" alt=""></p>
+<h3><span id="jboss-設定">JBoss 設定</span></h3>
+<p><img src="https://i.imgur.com/fyIxQI0.png" alt=""></p>
+<p><img src="https://i.imgur.com/2nqJB1E.png" alt=""></p>
+<p><img src="https://i.imgur.com/mDBYpqF.png" alt=""></p>
+<p><img src="https://i.imgur.com/5Jdz5zq.png" alt=""></p>
+<p><strong>把 war 檔 加上 jboss server 中</strong><br>
+<img src="https://i.imgur.com/0BIoZzS.png" alt=""></p>
+<p><strong>按下啟動</strong><br>
+<img src="https://i.imgur.com/9CrD0Vx.png" alt=""></p>
+<p><strong>啟動後網址:</strong><br>
+<a href="http://localhost:8080/xyz/login" target="_blank" rel="noopener">http://localhost:8080/xyz/login</a></p>
+<p><strong>調整字體大小:</strong><br>
+<img src="https://i.imgur.com/PlAHO8J.png" alt=""></p>
+<p><strong>調整console顯示的行數:</strong><br>
+<img src="https://i.imgur.com/QjzhGK4.png" alt=""></p>
+<p><strong>顯示行數</strong><br>
+<img src="https://i.imgur.com/CzhCUAw.png" alt=""></p>
+<hr>
+<h3><span id="eclipse-快捷鍵">eclipse 快捷鍵</span></h3>
+<p><strong>quick text search (找檔案內文關鍵字)<br>
+ctrl + shift + l</strong><br>
+<img src="https://i.imgur.com/3YdfVn2.png" alt=""></p>
+<p><strong>open type (找 java 檔案 by 檔名)</strong><br>
+<img src="https://i.imgur.com/8URm2YN.png" alt=""></p>
+<p><strong>open resource (找任何檔案 by 檔名)<br>
+ctrl + shift + r</strong><br>
+<img src="https://i.imgur.com/EbcoWtt.png" alt=""></p>
+<p><strong>整理 import<br>
+ctrl + shift + o</strong></p>
+<p><strong>縮排排版<br>
+ctrl + i</strong></p>
+<p><strong>刪掉一整行<br>
+ctrl + d</strong></p>
+<p><strong>rename 所有這個變數<br>
+alt + shift + r</strong></p>
+<p><strong>sysout 自動帶出完整一句<br>
+打 sysout + alt + / =&gt; System.out.println();</strong></p>
+<p><strong>在方法上按 F3 可以進此方法看程式碼</strong></p>
+<p><strong>在方法上按 ctrl, 可以選 implement</strong><br>
+<img src="https://i.imgur.com/V0xmKG7.png" alt=""></p>
+<p><strong>在方法上 右鍵 open call hierachy, 可以看誰呼叫這方法</strong><br>
+<img src="https://i.imgur.com/Ymd9PEE.png" alt=""></p>
+<hr>
+<h1><span id="環境疑難雜症">環境疑難雜症</span></h1>
+<h2><span id="狀況-一">狀況 一</span></h2>
+<p><strong>新增 db table 時, 請新增…</strong></p>
+<p><img src="https://i.imgur.com/1df52VF.png" alt=""></p>
+<p><strong>maven repository 會抓最新的 entity jar 下來到這, 如果有時候覺得抓到還是舊的, 關掉eclipse, 刪除掉整個 gov 資料夾, 在開啟 eclipse 就會整個重抓一次</strong><br>
+<img src="https://i.imgur.com/QbyANSq.png" alt=""></p>
+<h2><span id="狀況-二">狀況 二</span></h2>
+<p><strong>做 maven update　時會重新產生 entity</strong><br>
+<strong>有時候產生出來的 entity (有成功產出), eclipse 沒顯示, 要自己手動加</strong></p>
+<p><strong>對 xxx-entity 按右鍵</strong><br>
+<img src="https://i.imgur.com/dn8y1SJ.png" alt=""></p>
+<p><img src="https://i.imgur.com/WAhomOW.png" alt=""></p>
+<p><strong>把 entity 選起來</strong><br>
+<img src="https://i.imgur.com/wlNGpGr.png" alt=""></p>
+<h1><span id="2-一些範例">2. 一些範例</span></h1>
+<h2><span id="spa-是什麼">SPA 是什麼？</span></h2>
+<h3><span id="單頁面應用程式-single-page-applications">單頁面應用程式 Single Page Applications</span></h3>
+<p><strong>過去: Multi-Page (多頁式)</strong><br>
+<img src="https://i.imgur.com/ySjoUpe.png" alt=""></p>
+<p>以前製作網站大多是一個一個頁面切換，點選一個按鈕，重新載入另外一個頁面。</p>
+<p><strong>現在: Single-Page (單頁式)</strong><br>
+<img src="https://i.imgur.com/T7WXoCj.png" alt=""></p>
+<p><img src="https://i.imgur.com/4MBHKIY.png" alt=""></p>
+<hr>
+<h2><span id="前後端互動的方式">前後端互動的方式</span></h2>
+<h3><span id="restful-api">RESTful API</span></h3>
+<h4><span id="representational-state-transfer簡稱rest它是一種網路架構風格他並不是一種標準">Representational State Transfer，簡稱REST，它是一種網路架構風格，他並不是一種標準。</span></h4>
+<p>而 RESTful 可以這樣子想像: 美麗 (Beauty) 的事物可以稱為 Beautiful; 設計為 REST 的系統就可以稱為 RESTful</p>
+<p>以 API 而言，假設我們正在撰寫一組待辦事項的 API，<br>
+可能會有以下方式來作為 API 的 interface:</p>
+<p>獲取使用者資料 /getAllUsers<br>
+獲取使用者資料 /getUser/1<br>
+新增使用者資料 /createUser<br>
+更新使用者資料 /updateUser/1<br>
+刪除使用者資料 /deleteUser/1</p>
+<p>以 REST 風格來開發 RESTful API:</p>
+<p>獲取使用者資料 /GET /users<br>
+獲取使用者資料 /GET /user/1<br>
+新增使用者資料 /POST /user<br>
+更新使用者資料 /PUT /user/1<br>
+刪除使用者資料 /DELETE /user/1</p>
+<p><strong>兩者差異是在於 RESTful API 充分地使用了 HTTP protocol (GET/POST/PUT/DELETE)</strong></p>
+<hr>
+<h3><span id="js-呼叫-rest-api-達到-crud-新增修改刪除-的功能">js 呼叫 rest api, 達到 crud (新增修改刪除) 的功能</span></h3>
+<h3><span id="rest-api-eac108eresourcejava">Rest api: Eac108eResource.java</span></h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 若沒有傳 key 值，會 mapping 到此網址，查詢所有資料</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)</span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Ads132fa&gt; <span class="title">find</span><span class="params">(Alerter alerter)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> find(Strings.emptyToNull(<span class="keyword">null</span>), alerter);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 若有傳 key 值，會 mapping 到此網址，查詢單一筆資料</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/&#123;ped&#125;"</span>, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Ads132fa <span class="title">get</span><span class="params">(@PathVariable String ped, Alerter alerter)</span> </span>&#123;</span><br><span class="line">    List&lt;Ads132fa&gt; asb103fas = find(ped, alerter);</span><br><span class="line">    <span class="keyword">if</span> (asb103fas.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> asb103fas.get(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/&#123;ped&#125;"</span>, method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">create</span><span class="params">(@PathVariable String ped, @Valid @RequestBody Ads132fa asb103fa,</span></span></span><br><span class="line"><span class="function"><span class="params">        Alerter alerter)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (service.create(asb103fa) != <span class="keyword">null</span>) &#123;</span><br><span class="line">        alerter.success(Messages.success_create());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        alerter.info(Messages.abort_create());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/&#123;ped&#125;"</span>, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(@PathVariable String ped, @RequestBody Ads132fa asb103fa, Alerter alerter)</span> </span>&#123;</span><br><span class="line">    service.save(asb103fa);</span><br><span class="line">    alerter.success(Messages.success_update());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/&#123;ped&#125;"</span>, method = RequestMethod.DELETE)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(@PathVariable String ped, Alerter alerter)</span> </span>&#123;</span><br><span class="line">    service.delete(ped);</span><br><span class="line">    alerter.success(Messages.success_delete());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 使用 execute 的方式執行，傳入 entity 在判斷要查詢單筆或是多筆。</span></span><br><span class="line"><span class="comment"> * 要注意網址不要與 key 值的網址重覆。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/find/all"</span>, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)</span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Ads132fa&gt; <span class="title">find</span><span class="params">(@RequestBody Ads132fa asb103fa, Alerter alerter)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> find(asb103fa.getPed(), alerter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="eac108ejs">eac108e.js</span></h3>
+<p>js 呼叫 rest api</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$scope.query = <span class="function"><span class="keyword">function</span>(<span class="params">ped, omitAlerts</span>) </span>&#123;</span><br><span class="line">            ped = ped || ($scope.model ? $scope.model.ped : <span class="string">""</span>);</span><br><span class="line">            <span class="comment">// var result = eac108eService.find(&#123;ped:ped&#125;,omitAlerts||false);</span></span><br><span class="line">            <span class="keyword">var</span> result = eac108eService.findAll(<span class="string">'rest/find/all'</span>, &#123;</span><br><span class="line">                ped: ped</span><br><span class="line">            &#125;, omitAlerts || <span class="literal">false</span>);</span><br><span class="line">            result.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (response) &#123;</span><br><span class="line">                    state.query();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (angular.isArray(response)) &#123;</span><br><span class="line">                    $scope.gridData = response;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    $scope.gridData = [ response ];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3><span id="brt306ehtml-amp-brt306ejs-解說">brt306e.html &amp; brt306e.js 解說</span></h3>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-Hant-TW"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>代繳作業繳費期限維護 - BRT306E<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">th:substituteby</span>=<span class="string">"fragments/head_meta :: meta"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">meta</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">th:substituteby</span>=<span class="string">"fragments/resources :: head_resources"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">meta</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:substituteby</span>=<span class="string">"fragments/body_header :: body_header"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span> <span class="attr">data-ng-app</span>=<span class="string">"brt306eApp"</span>&gt;</span> <span class="comment">&lt;!-- 宣告angularjs 作用域 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span> <span class="attr">data-ng-controller</span>=<span class="string">"brt306eController"</span>&gt;</span> <span class="comment">&lt;!-- 宣告 controller 範圍和對應的 name --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 宣告一個 form (form-inline), 通常會給一個 name, 為了給驗證元件使用 --&gt;</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment">&lt;!-- data-c-form-validation: 如果此 FORM 要加上驗證 必須加上 --&gt;</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment">&lt;!-- data-c-enter-tab: 依照 tabindex 的順序按 enter 自動跳欄 --&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 按下 enter 時自動跳到下一個欄位包含所有的 input、select、button， 若 tabIndexThreshold 有設定時，--&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--則 tabIndexThreshold&lt; tabindex 以下的欄位 ，按下enter時不會進入。 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-inline"</span> <span class="attr">name</span>=<span class="string">"brt306eForm"</span> <span class="attr">data-c-form-validation</span>=<span class="string">"&#123;displayTrigger:'none'&#125;"</span></span></span><br><span class="line"><span class="tag">                        <span class="attr">data-c-enter-tab</span>=<span class="string">"&#123;tabIndexThreshold:1&#125;"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel panel-info"</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel-heading col-sm-12"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">"panel-title"</span>&gt;</span></span><br><span class="line">                                    <span class="comment">&lt;!-- $&#123;FUNCTION_ID&#125; 固定由後端讀取而來, 固定寫即可 --&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;FUNCTION_ID&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"text-muted"</span>&gt;</span>代繳作業繳費期限維護<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel-body"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row-fluid"</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-12 text-right"</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">data-ng-click</span>=<span class="string">"create()"</span></span></span><br><span class="line"><span class="tag">                                                <span class="attr">tabindex</span>=<span class="string">"3"</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-plus"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 新增</span><br><span class="line">                                            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">data-ng-click</span>=<span class="string">"reset()"</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-refresh"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 清除</span><br><span class="line">                                            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">data-ng-click</span>=<span class="string">"remove()"</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-remove"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 刪除</span><br><span class="line">                                            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">data-ng-click</span>=<span class="string">"query(true)"</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-search"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 查詢</span><br><span class="line">                                            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel panel-info"</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel-body"</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-4"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-7"</span>&gt;</span></span><br><span class="line">                                                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-3 text-right"</span>&gt;</span></span><br><span class="line">                                                            <span class="tag">&lt;<span class="name">label</span>&gt;</span>付款類別<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-5"</span>&gt;</span></span><br><span class="line">                                                            <span class="comment">&lt;!-- data-c-validate = &#123;函式名稱 : 要帶入顯示訊息內的參數，若沒有則寫true。&#125;  --&gt;</span></span><br><span class="line">                                                            <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"item"</span> <span class="attr">name</span>=<span class="string">"item"</span> <span class="attr">class</span>=<span class="string">"form-control"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">data-ng-model</span>=<span class="string">"model.item"</span> <span class="attr">data-c-validate</span>=<span class="string">"&#123;checkItem : true&#125;"</span>&gt;</span></span><br><span class="line">                                                                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span>&amp;nbsp;&amp;nbsp;&amp;nbsp;全部<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                                                                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"01"</span>&gt;</span>01-公保<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                                                                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"02"</span>&gt;</span>02-勞保<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                                                                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"03"</span>&gt;</span>03-勞工退休金<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                                                                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"04"</span>&gt;</span>04-健保<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                                                                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"05"</span>&gt;</span>05-退撫基金<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                                                            <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-3 text-right"</span>&gt;</span></span><br><span class="line">                                                            <span class="tag">&lt;<span class="name">label</span>&gt;</span>款項所屬年月<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                        <span class="comment">&lt;!-- dateValidation 此函式 在 customValidation.js --&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-9"</span>&gt;</span></span><br><span class="line">                                                            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"payYyymm"</span> <span class="attr">name</span>=<span class="string">"payYyymm"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">data-ng-model</span>=<span class="string">"model.payYyymm"</span> <span class="attr">data-ui-mask</span>=<span class="string">"99999"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">data-c-validate</span>=<span class="string">"&#123;dateValidation : ['yyyMM','Minguo'],messages:&#123;dateValidation:'年月錯誤 (YYYMM)'&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">data-ng-keydown</span>=<span class="string">"findEndDateByEnter($event)"</span> <span class="attr">style</span>=<span class="string">"width: 35%;"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">tabindex</span>=<span class="string">"1"</span> <span class="attr">required</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-3 text-right"</span>&gt;</span></span><br><span class="line">                                                            <span class="tag">&lt;<span class="name">label</span>&gt;</span>代繳期限<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-9"</span>&gt;</span></span><br><span class="line">                                                            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"endDate"</span> <span class="attr">name</span>=<span class="string">"endDate"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">data-ng-model</span>=<span class="string">"model.endDate"</span> <span class="attr">style</span>=<span class="string">"width: 40%;"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">data-c-validate</span>=<span class="string">"&#123;dateValidation : ['yyyMMdd','Minguo'], checkEndDate:true, messages:&#123;dateValidation:'代繳期限錯誤!!'&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">tabindex</span>=<span class="string">"2"</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row text-center"</span>&gt;</span></span><br><span class="line">                                        <span class="comment">&lt;!-- 使用  ng-grid 元件 --&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-style"</span> <span class="attr">data-ng-grid</span>=<span class="string">"itemGrid"</span> <span class="attr">style</span>=<span class="string">"display: inline-block; height: 400px; width: 520px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:substituteby</span>=<span class="string">"fragments/body_footer :: footer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:substituteby</span>=<span class="string">"fragments/resources :: body_resources"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">th:src</span>=<span class="string">"@&#123;/scripts/brt306e.js&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> app = angular.module(<span class="string">"brt306eApp"</span>, [ <span class="string">'ntaCommonModule'</span>]); <span class="comment">// 都一定會注入 ntaCommonModule</span></span><br><span class="line"></span><br><span class="line">    app.factory(<span class="string">'brt306eService'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">cResource</span>)</span>&#123; <span class="comment">//注入 cResource 來使用框架提供的 ajax 方法,</span></span><br><span class="line"></span><br><span class="line">    	<span class="comment">// cResource 第一個參數 url pattern, 參數物件</span></span><br><span class="line">    	<span class="comment">// 這裡只有 下面 remove 會用到, 為了對應後端 rest api url</span></span><br><span class="line"></span><br><span class="line">    	<span class="comment">/*@RequestMapping(value = "/&#123;payYyymm&#125;/&#123;item&#125;", method = RequestMethod.DELETE)</span></span><br><span class="line"><span class="comment">          public @ResponseBody</span></span><br><span class="line"><span class="comment">          void delete(@PathVariableModel Brt352faId id, Alerter alerter) &#123;*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> resource = cResource(<span class="string">'rest/:payYyymm/:item'</span>, &#123;<span class="attr">payYyymm</span> :<span class="string">"@payYyymm"</span>, <span class="attr">item</span> :<span class="string">"@item"</span>&#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果只要用execute, 宣告這樣即可 var resource = cResource('rest', &#123;&#125;);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            remove : <span class="function"><span class="keyword">function</span>(<span class="params">model</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> resource.remove(model); <span class="comment">// delete</span></span><br><span class="line">            &#125;,</span><br><span class="line">            execute : <span class="function"><span class="keyword">function</span> (<span class="params">url , param, showAlerts, clearAlerts</span>)</span>&#123;</span><br><span class="line">            	<span class="comment">// omitAlerts: 忽略這次 ajax 的噴錯或警告, clearAlerts: 是否清除 alert</span></span><br><span class="line">                <span class="keyword">var</span> options = &#123;<span class="string">'omitAlerts'</span>: !showAlerts, <span class="string">'clearAlerts'</span>: clearAlerts&#125;;</span><br><span class="line">                <span class="keyword">return</span> resource.execute(url , param, options);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注入所需的 物件 $scope, brt306eService, alerter, cValidation</span></span><br><span class="line">    app.controller(<span class="string">'brt306eController'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, brt306eService, alerter, cValidation</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">        $scope.addSpaces = <span class="function"><span class="keyword">function</span>(<span class="params">input</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> result = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">if</span>(input == <span class="string">''</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</span><br><span class="line">                    result += <span class="built_in">String</span>.fromCharCode(<span class="number">160</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//初始</span></span><br><span class="line">        <span class="keyword">var</span> init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            $scope.model = &#123;&#125;;</span><br><span class="line">            $scope.itemData = []; <span class="comment">// or $scope.itemData.length = 0</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        init();</span><br><span class="line">        $scope.model.item = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//帶出EndDate</span></span><br><span class="line">        $scope.findEndDateByEnter = <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</span><br><span class="line">        	<span class="comment">// 檢查 是否按下的案件是 enter (13) 並檢查 payYyymm 這欄位是不是有通過檢核</span></span><br><span class="line">            <span class="keyword">if</span>($event.keyCode == <span class="number">13</span> &amp;&amp; $scope.validate($scope.brt306eForm.payYyymm)) &#123;</span><br><span class="line"></span><br><span class="line">            	<span class="comment">//呼叫 後端 findEndDate rest api</span></span><br><span class="line">                <span class="keyword">var</span> result = brt306eService.execute(<span class="string">'rest/findEndDate'</span>, $scope.model);</span><br><span class="line">                result.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;<span class="comment">//針對回傳做事</span></span><br><span class="line">                	<span class="comment">//沒有錯誤發生時執行以下</span></span><br><span class="line">                	<span class="keyword">if</span>(response) &#123;</span><br><span class="line">                        $scope.model.endDate = response.endDate;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//查詢 load grid</span></span><br><span class="line">        $scope.query = <span class="function"><span class="keyword">function</span>(<span class="params">showAlerts</span>) </span>&#123;</span><br><span class="line">        	<span class="comment">//呼叫 後端 findGrid rest api</span></span><br><span class="line">            <span class="keyword">var</span> result = brt306eService.execute(<span class="string">'rest/findGrid'</span>, $scope.model, showAlerts);</span><br><span class="line">            result.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;<span class="comment">//針對回傳做事</span></span><br><span class="line">            	<span class="comment">//沒有錯誤發生時執行以下</span></span><br><span class="line">            	<span class="keyword">if</span>(response) &#123;</span><br><span class="line">                    $scope.itemData = response;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//新增</span></span><br><span class="line">        $scope.create = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">           <span class="comment">// 在 js 檢查這三個欄位是否通過, 記得 要檢核的欄位要有 name</span></span><br><span class="line">           <span class="comment">// 如果是針對整個 form 的欄位都要檢查  $scope.validate($scope.brt306eForm)</span></span><br><span class="line">            <span class="keyword">if</span>($scope.validate($scope.brt306eForm.item, $scope.brt306eForm.payYyymm, $scope.brt306eForm.endDate)) &#123;</span><br><span class="line"></span><br><span class="line">            	<span class="comment">//呼叫 後端create rest api</span></span><br><span class="line">                <span class="keyword">var</span> result = brt306eService.execute(<span class="string">'rest/create'</span>, $scope.model, <span class="literal">true</span>);</span><br><span class="line">                result.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;  <span class="comment">//針對回傳做事</span></span><br><span class="line">                	<span class="comment">//沒有錯誤發生時執行以下</span></span><br><span class="line">                    $scope.model.payYyymm = <span class="string">""</span>;</span><br><span class="line">                    $scope.model.endDate = <span class="string">""</span>;</span><br><span class="line">                    $scope.query();</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//刪除</span></span><br><span class="line">        $scope.remove = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            bootbox.confirm(<span class="string">"是否確定刪除"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123; <span class="comment">//呼叫 bootbox 元件</span></span><br><span class="line">                <span class="keyword">if</span> (result)&#123; <span class="comment">// 如果按下確定</span></span><br><span class="line"></span><br><span class="line">                	<span class="comment">//呼叫 後端 刪除 rest api</span></span><br><span class="line">                    <span class="keyword">var</span> result = brt306eService.remove($scope.model);</span><br><span class="line">                    result.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123; <span class="comment">//針對回傳做事</span></span><br><span class="line">                        init(); <span class="comment">//沒有錯誤發生時執行這</span></span><br><span class="line">                    &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">                        alerter.fatal(<span class="string">"無資料可刪除! 失敗!"</span>); <span class="comment">//有錯誤發生時執行這</span></span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//做清除</span></span><br><span class="line">        $scope.reset = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            init(); <span class="comment">//呼叫初始</span></span><br><span class="line">            alerter.clear(); <span class="comment">//清除 alerter</span></span><br><span class="line">            $scope.clearValidationMessages(); <span class="comment">//用來清除所有的驗證錯誤</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//gird 欄位定義變數</span></span><br><span class="line">        $scope.itemGridCols = [ &#123;<span class="attr">field</span>:<span class="string">'item'</span>, <span class="attr">width</span>:<span class="string">'120px'</span>, <span class="attr">displayName</span>:<span class="string">'付款類別'</span>, <span class="attr">cellFilter</span>: <span class="string">"itemFilter"</span>&#125;,</span><br><span class="line">                                &#123;<span class="attr">field</span>:<span class="string">'payYyymm'</span>, <span class="attr">width</span>:<span class="string">'100px'</span>, <span class="attr">displayName</span>:<span class="string">'款項年月'</span>&#125;,</span><br><span class="line">                                &#123;<span class="attr">field</span>:<span class="string">'endDate'</span>, <span class="attr">width</span>:<span class="string">'100px'</span>, <span class="attr">displayName</span>:<span class="string">'代繳期限'</span>&#125;,</span><br><span class="line">                                &#123;<span class="attr">field</span>:<span class="string">'uids'</span>, <span class="attr">width</span>:<span class="string">'100px'</span>, <span class="attr">displayName</span>:<span class="string">'異動人'</span>&#125;,</span><br><span class="line">                                &#123;<span class="attr">field</span>:<span class="string">'mdate'</span>, <span class="attr">width</span>:<span class="string">'120px'</span>, <span class="attr">displayName</span>:<span class="string">'異動日期'</span>&#125; ];</span><br><span class="line">        <span class="comment">// grid 物件</span></span><br><span class="line">        $scope.itemGrid = &#123;</span><br><span class="line">                multiSelect : <span class="literal">false</span>, <span class="comment">//是否可多選</span></span><br><span class="line">                data : <span class="string">'itemData'</span>,   <span class="comment">// 資料來源 陣列變數名稱: 請用字串</span></span><br><span class="line">                columnDefs : <span class="string">'itemGridCols'</span>, <span class="comment">//gird 欄位定義變數名稱: 請用字串</span></span><br><span class="line">                enableColumnResize: <span class="literal">true</span>, <span class="comment">//欄位是否可以調整大小</span></span><br><span class="line">                selectedItems: $scope.selectedItemData, <span class="comment">//選取那些資料</span></span><br><span class="line">                afterSelectionChange : <span class="function"><span class="keyword">function</span>(<span class="params">rowItem</span>)</span>&#123; <span class="comment">// 選取後要做什麼事</span></span><br><span class="line">                    <span class="keyword">if</span> (rowItem.selected) &#123;</span><br><span class="line">                        $scope.model = angular.copy(rowItem.entity);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 自訂檢核</span></span><br><span class="line">        <span class="keyword">var</span> checkItem = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (value === <span class="string">''</span>) ? <span class="literal">false</span> : <span class="literal">true</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">        cValidation.register(<span class="string">'checkItem'</span>, checkItem, <span class="string">'付款類別錯誤!'</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> checkEndDate = <span class="function"><span class="keyword">function</span>(<span class="params">value, scope</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> payYyymm = <span class="built_in">parseInt</span>(scope.model.payYyymm + <span class="string">'01'</span>, <span class="number">10</span>);</span><br><span class="line">            <span class="keyword">var</span> endDate = <span class="built_in">parseInt</span>(scope.model.endDate, <span class="number">10</span>);</span><br><span class="line">            <span class="keyword">return</span> (payYyymm &gt; endDate) ? <span class="literal">false</span> : <span class="literal">true</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">        cValidation.register(<span class="string">'checkEndDate'</span>, checkEndDate, <span class="string">'代繳期限錯誤!!'</span>);</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//自訂 filter</span></span><br><span class="line">    app.filter(<span class="string">'itemFilter'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">switch</span>(input) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"01"</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"01-公保"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"02"</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"02-勞保"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"03"</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"03-勞工退休金"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"04"</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"04-健保"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"05"</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"05-退撫基金"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"全部"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h3><span id="ng-grid">ng-grid</span></h3>
+<p><a href="https://github.com/angular-ui/ng-grid-legacy/wiki" target="_blank" rel="noopener">https://github.com/angular-ui/ng-grid-legacy/wiki</a></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/12/01/Spring-MVC-Spring-DATA/" data-toggle="tooltip" data-placement="top" title="舊專案必學技術整理 - Spring MVC &  Spring Data">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/11/24/AngularJS/" data-toggle="tooltip" data-placement="top" title="舊專案必學技術整理 - AngularJS ">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">開發環境設置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">maven 是什麼?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">每次選一個 “新” 的 workspace 後, 請做這些事</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">設定 maven 設定檔</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">匯入專案 (nta-app-sample)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">Eclipse view 的新增</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">JBoss 設定</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">eclipse 快捷鍵</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">環境疑難雜症</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">狀況 一</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">狀況 二</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">2. 一些範例</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">SPA 是什麼？</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.1.1.</span> <span class="toc-nav-text">單頁面應用程式 Single Page Applications</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">前後端互動的方式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.2.1.</span> <span class="toc-nav-text">RESTful API</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.2.1.1.</span> <span class="toc-nav-text">Representational State Transfer，簡稱REST，它是一種網路架構風格，他並不是一種標準。</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.2.2.</span> <span class="toc-nav-text">js 呼叫 rest api, 達到 crud (新增修改刪除) 的功能</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.2.3.</span> <span class="toc-nav-text">Rest api: Eac108eResource.java</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.2.4.</span> <span class="toc-nav-text">eac108e.js</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.2.5.</span> <span class="toc-nav-text">brt306e.html &amp; brt306e.js 解說</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.2.6.</span> <span class="toc-nav-text">ng-grid</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#AngularJS" title="AngularJS">AngularJS</a>
+                        
+                          <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                        
+                          <a class="tag" href="/tags/#Eclipse" title="Eclipse">Eclipse</a>
+                        
+                          <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
+                        
+                          <a class="tag" href="/tags/#Maven" title="Maven">Maven</a>
+                        
+                          <a class="tag" href="/tags/#JBoss" title="JBoss">JBoss</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "timmybeefweb";
+    var disqus_identifier = "https://timmybeef.github.io/2018/11/26/env-and-RESTful-API/";
+    var disqus_url = "https://timmybeef.github.io/2018/11/26/env-and-RESTful-API/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/TimLin65070898">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/timmyBeef">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/tim-lin-5b6485171">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Tim Lin 2021 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://beantech.org">BeanTech</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://timmybeef.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://timmybeef.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":null,"autoNumber":"AMS"}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+
+</html>

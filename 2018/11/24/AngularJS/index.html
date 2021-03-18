@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="1oh3VluWAkI2CDranTPnxXgiWq6n6JqXrfhMjIO2yXY">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TimmyBeef&#39;s Blog">
+    <meta name="keyword" content="TimmyBeef&#39;s Blog">
+    <link rel="shortcut icon" href="/img/b_letter.jpg">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          舊專案必學技術整理 - AngularJS  - TimmyBeef&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://timmybeef.github.io/2018/11/24/AngularJS/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/header_img/archive-bg.png')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/signature5c48060491c81.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#AngularJS" title="AngularJS">AngularJS</a>
+                            
+                        </div>
+                        <h1>舊專案必學技術整理 - AngularJS </h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Tim Lin on
+                            2018-11-24
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">TimmyBeef&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="angularjs-必會語法解說">AngularJS 必會語法解說</span></h1>
+<h2><span id="two-way-data-binding">Two-way Data Binding</span></h2>
+<p><strong>在 AngularJS 裡，所有在 View 與 Controller 之間，都是透過 Model 來做資料傳遞，<br>
+無論你在 View 這端透過表單元素修改了內容，或是在 Controller 這端修改了 Model 內容，<br>
+兩邊都會即時發生變化，因為在 AngularJS 框架中會監控 (watch) Model 物件的任何變化，<br>
+並隨時反映到 View 上面。以下是雙向資料繫結的示意圖：</strong></p>
+<p><img src="https://i.imgur.com/BwxAEoa.png" alt=""></p>
+<h3><span id="ng-app"></span></h3>
+<p>是用來宣告angular的範圍</p>
+<h3><span id="ng-controller-amp-scope">ng-controller &amp; $scope</span></h3>
+<p><a href="https://jsbin.com/nocedibagi/edit?html,js,output" target="_blank" rel="noopener">https://jsbin.com/nocedibagi/edit?html,js,output</a></p>
+<h3><span id="scope">$scope</span></h3>
+<p><a href="https://docs.angularjs.org/guide/scope" target="_blank" rel="noopener">https://docs.angularjs.org/guide/scope</a></p>
+<h4><span id="scope-as-data-model">Scope as Data-Model</span></h4>
+<p>Scope is the glue (膠；膠水) between application controller and the view.<br>
+•連結 html (view) 與 JS (controller) 的橋樑<br>
+<img src="https://i.imgur.com/XY3jcI3.png" alt=""><br>
+•每一個 angular 的應用程式只會有一個 root scope，但是可以有很多子 scope 物件(即可以多個controller)<br>
+•當宣告一個 controller 時，就會產生一個 scope 物件(Data-Model)<br>
+<img src="https://i.imgur.com/b4GdWSv.png" alt=""></p>
+<h3><span id="ng-model"></span></h3>
+<p>將 html 上輸入的值綁定到 scope 上<br>
+<a href="http://jsbin.com/ogecuw/1/edit" target="_blank" rel="noopener">http://jsbin.com/ogecuw/1/edit</a><br>
+所以<br>
+當 html 的值變化: scope 上的值變化<br>
+當 controller 把 scope 的值改變: html 上顯示的值也會改變<br>
+=&gt; two-way binding</p>
+<h3><span id="angularjs-ng-model-vs-javascript-ampamp-jquery">angularJS ng-model v.s. javascript &amp;&amp; JQuery</span></h3>
+<p><strong>javascript</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">html:</span><br><span class="line">&lt;input id=<span class="string">"demo"</span>/&gt;</span><br><span class="line"></span><br><span class="line">在 js 要取值:</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"demo"</span>).value;</span><br><span class="line">此外 每次要做取值 設值 還要自己設定事件... change, click...來做 model binding, 超麻煩</span><br></pre></td></tr></table></figure>
+<p><strong>JQuery</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">html:</span><br><span class="line">&lt;input id=<span class="string">"demo"</span>/&gt;</span><br><span class="line"></span><br><span class="line">在 js 要取值:</span><br><span class="line">$(<span class="string">'#demo'</span>).val();</span><br><span class="line">此外 每次要做取值 設值 還要自己設定事件... change, click...來做 model binding, 超麻煩</span><br></pre></td></tr></table></figure>
+<h3><span id="內嵌繫結-interpolation">內嵌繫結 (Interpolation)</span></h3>
+<pre><code>{{ 要顯示的 scope 內的變數 }}
+</code></pre>
+<h3><span id="ng-bind">ng-bind</span></h3>
+<h3><span id="ng-click">ng-click</span></h3>
+<p><a href="https://jsbin.com/angularjs-controller/3/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/angularjs-controller/3/edit?html,output</a></p>
+<h3><span id="ng-showng-hide">ng-show/ng-hide</span></h3>
+<p><a href="https://code.angularjs.org/1.2.6/docs/api/ng.directive:ngShow" target="_blank" rel="noopener">https://code.angularjs.org/1.2.6/docs/api/ng.directive:ngShow</a><br>
+<a href="http://jsbin.com/opojaq/7/edit" target="_blank" rel="noopener">http://jsbin.com/opojaq/7/edit</a></p>
+<h3><span id="ng-init">ng-init</span></h3>
+<p><a href="http://jsbin.com/ucodup/7/edit" target="_blank" rel="noopener">http://jsbin.com/ucodup/7/edit</a></p>
+<h3><span id="ng-repeat">ng-repeat</span></h3>
+<p><a href="https://jsbin.com/fahahuseba/edit?html,css,js,output" target="_blank" rel="noopener">https://jsbin.com/fahahuseba/edit?html,css,js,output</a><br>
+<a href="https://docs.angularjs.org/api/ng/directive/ngRepeat" target="_blank" rel="noopener">https://docs.angularjs.org/api/ng/directive/ngRepeat</a></p>
+<h3><span id="track-by-index">track by $index</span></h3>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Best Practice: If you are working <span class="keyword">with</span> objects that have <span class="keyword">a</span> unique</span><br><span class="line">identifier property, you should track <span class="keyword">by</span> this identifier instead <span class="keyword">of</span> <span class="keyword">the</span> </span><br><span class="line">object instance, e.g. <span class="keyword">item</span> <span class="keyword">in</span> <span class="keyword">items</span> track <span class="keyword">by</span> <span class="keyword">item</span>.id. Should you reload </span><br><span class="line">your data later, ngRepeat will <span class="keyword">not</span> have <span class="built_in">to</span> rebuild <span class="keyword">the</span> DOM elements <span class="keyword">for</span></span><br><span class="line"><span class="keyword">items</span> <span class="keyword">it</span> has already rendered, even <span class="keyword">if</span> <span class="keyword">the</span> JavaScript objects <span class="keyword">in</span> <span class="keyword">the</span></span><br><span class="line">collection have been substituted <span class="keyword">for</span> <span class="built_in">new</span> ones. For large collections, this</span><br><span class="line">significantly improves rendering performance.</span><br></pre></td></tr></table></figure>
+<h3><span id="input-欄位">input 欄位</span></h3>
+<p><a href="https://code.angularjs.org/1.2.6/docs/api/ng.directive:input" target="_blank" rel="noopener">https://code.angularjs.org/1.2.6/docs/api/ng.directive:input</a></p>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">input 有以下屬性：</span><br><span class="line"></span><br><span class="line">name 名稱</span><br><span class="line">ng-model 綁定的資料</span><br><span class="line">required 限制是否必填</span><br><span class="line">ng-required 限制是否必填</span><br><span class="line">ng-minlength 限制最小長度</span><br><span class="line">ng-maxlength 限制最大長度</span><br><span class="line">ng-pattern 限制RegExp格式</span><br><span class="line">ng-change 當input的值發生變化的時候執行</span><br><span class="line"></span><br><span class="line">除此之外，input 還包含了以下類型：</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">type</span></span>=<span class="string">"checkbox"</span></span><br><span class="line"><span class="class"><span class="keyword">type</span></span>=<span class="string">"email"</span></span><br><span class="line"><span class="class"><span class="keyword">type</span></span>=<span class="string">"number"</span></span><br><span class="line"><span class="class"><span class="keyword">type</span></span>=<span class="string">"radio"</span></span><br><span class="line"><span class="class"><span class="keyword">type</span></span>=<span class="string">"text"</span></span><br><span class="line"><span class="class"><span class="keyword">type</span></span>=<span class="string">"url"</span></span><br></pre></td></tr></table></figure>
+<h3><span id="input-checkbox">input checkbox</span></h3>
+<p><a href="https://jsbin.com/egavik/1/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/egavik/1/edit?html,output</a></p>
+<h3><span id="ng-option">ng-option</span></h3>
+<p><a href="http://blog.miniasp.com/post/2013/05/12/AngularJS-ng-module-select-ngOptions-usage-samples.aspx" target="_blank" rel="noopener">http://blog.miniasp.com/post/2013/05/12/AngularJS-ng-module-select-ngOptions-usage-samples.aspx</a></p>
+<p><a href="https://jsbin.com/gekahapeto/edit?html,js,output" target="_blank" rel="noopener">https://jsbin.com/gekahapeto/edit?html,js,output</a></p>
+<h3><span id="pipe-filter">pipe filter</span></h3>
+<p><a href="https://code.angularjs.org/1.2.6/docs/api/ng.filter:currency" target="_blank" rel="noopener">https://code.angularjs.org/1.2.6/docs/api/ng.filter:currency</a><br>
+<strong>內建的 filter</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">currency 加入貨幣符號</span><br><span class="line">date 可以將 Date 物件轉成指定格式的日期字串</span><br><span class="line">filter 可以篩選陣列中的內容</span><br><span class="line">json 可以將javascriop物件轉成json字串</span><br><span class="line">limitTo 可以限制陣列或字串裡面的字元個數</span><br><span class="line">number 可以為數值或指定小數以下位數</span><br><span class="line">lowercase 可以將英文字串轉成英文小寫</span><br><span class="line">uppercase 可以將英文字串轉成英文大寫</span><br><span class="line">orderBy 可以將資料作排序</span><br></pre></td></tr></table></figure>
+<p><a href="https://jsbin.com/uPETequ/2/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/uPETequ/2/edit?html,output</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> app = angular.module(<span class="string">"app"</span>, []);</span><br><span class="line"></span><br><span class="line">    app.controller(<span class="string">'appController'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $filter</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> articles = [</span><br><span class="line">            &#123;</span><br><span class="line">                title: <span class="string">"How to build webapps that scale"</span>,</span><br><span class="line">                slug: <span class="string">"zp7yqc"</span>,</span><br><span class="line">                body: <span class="string">"laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"</span>,</span><br><span class="line">                createdAt: <span class="string">"2018-05-11T21:58:27.358Z"</span>,</span><br><span class="line">                updatedAt: <span class="string">"2018-05-11T21:58:27.358Z"</span>,</span><br><span class="line">                tagList: [],</span><br><span class="line">                description: <span class="string">"laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"</span>,</span><br><span class="line">                author: &#123;</span><br><span class="line">                    username: <span class="string">"Eliseo@gardner.biz"</span>,</span><br><span class="line">                    bio: <span class="string">"Eliseo"</span>,</span><br><span class="line">                    image: <span class="string">"/assets/img/N4VcUeJ.jpg"</span>,</span><br><span class="line">                    following: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                favorited: <span class="literal">false</span>,</span><br><span class="line">                favoritesCount: <span class="number">1</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                title: <span class="string">"quo vero reiciendis velit similique earum"</span>,</span><br><span class="line">                slug: <span class="string">"p3vcsw"</span>,</span><br><span class="line">                body: <span class="string">"est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint nostrum voluptatem reiciendis et"</span>,</span><br><span class="line">                createdAt: <span class="string">"2018-05-11T21:55:00.722Z"</span>,</span><br><span class="line">                updatedAt: <span class="string">"2018-05-11T21:55:00.722Z"</span>,</span><br><span class="line">                tagList: [],</span><br><span class="line">                description: <span class="string">"est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint nostrum voluptatem reiciendis et"</span>,</span><br><span class="line">                author: &#123;</span><br><span class="line">                    username: <span class="string">"Jayne_Kuhic@sydney.com"</span>,</span><br><span class="line">                    bio: <span class="string">"Jayne_Kuhic"</span>,</span><br><span class="line">                    image: <span class="string">"/assets/img/Qr71crq.jpg"</span>,</span><br><span class="line">                    following: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                favorited: <span class="literal">false</span>,</span><br><span class="line">                favoritesCount: <span class="number">3</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                title: <span class="string">"odio adipisci rerum aut animi"</span>,</span><br><span class="line">                slug: <span class="string">"3c69lg"</span>,</span><br><span class="line">                body: <span class="string">"quia molestiae reprehenderit quasi aspernatur\naut expedita occaecati aliquam eveniet laudantium\nomnis quibusdam delectus saepe quia accusamus maiores nam est\ncum et ducimus et vero voluptates excepturi deleniti ratione"</span>,</span><br><span class="line">                createdAt: <span class="string">"2018-05-11T19:49:35.917Z"</span>,</span><br><span class="line">                updatedAt: <span class="string">"2018-05-11T19:49:35.917Z"</span>,</span><br><span class="line">                tagList: [],</span><br><span class="line">                description: <span class="string">"quia molestiae reprehenderit quasi aspernatur\naut expedita occaecati aliquam eveniet laudantium\nomnis quibusdam delectus saepe quia accusamus maiores nam est\ncum et ducimus et vero voluptates excepturi deleniti ratione"</span>,</span><br><span class="line">                author: &#123;</span><br><span class="line">                    username: <span class="string">"Lew@alysha.tv"</span>,</span><br><span class="line">                    bio: <span class="string">"Lew"</span>,</span><br><span class="line">                    image: <span class="string">"/assets/img/cat.jpg"</span>,</span><br><span class="line">                    following: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                favorited: <span class="literal">false</span>,</span><br><span class="line">                favoritesCount: <span class="number">5</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                title: <span class="string">"dolore omnis vol odio adipisci rerum aut animi"</span>,</span><br><span class="line">                slug: <span class="string">"3c69lg"</span>,</span><br><span class="line">                body: <span class="string">"quia molestiae reprehenderit quasi aspernatur\naut expedita occaecati aliquam eveniet laudantium\nomnis quibusdam delectus saepe quia accusamus maiores nam est\ncum et ducimus et vero voluptates excepturi deleniti ratione"</span>,</span><br><span class="line">                createdAt: <span class="string">"2018-05-11T19:49:35.917Z"</span>,</span><br><span class="line">                updatedAt: <span class="string">"2018-05-11T19:49:35.917Z"</span>,</span><br><span class="line">                tagList: [],</span><br><span class="line">                description: <span class="string">"quia molestiae reprehenderit quasi aspernatur\naut expedita occaecati aliquam eveniet laudantium\nomnis quibusdam delectus saepe quia accusamus maiores nam est\ncum et ducimus et vero voluptates excepturi deleniti ratione"</span>,</span><br><span class="line">                author: &#123;</span><br><span class="line">                    username: <span class="string">"Lew@alysha.tv"</span>,</span><br><span class="line">                    bio: <span class="string">"Lew"</span>,</span><br><span class="line">                    image: <span class="string">"/assets/img/cat.jpg"</span>,</span><br><span class="line">                    following: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                favorited: <span class="literal">false</span>,</span><br><span class="line">                favoritesCount: <span class="number">5</span></span><br><span class="line">            &#125;</span><br><span class="line">        ];</span><br><span class="line">        $scope.list = angular.copy(articles);</span><br><span class="line"></span><br><span class="line">        $scope.title = <span class="string">'NTA'</span>;</span><br><span class="line">        $scope.subtitle = <span class="string">'National Treasury Administration, Ministry of Finance'</span>;</span><br><span class="line">        $scope.showTitle = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        $scope.search = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            $scope.list = $filter(<span class="string">'filter'</span>)(articles, $scope.keyword.title);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h3><span id="自訂-pipe-filter">自訂 pipe filter</span></h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">app.filter(<span class="string">'itemFilter'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span>(input) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"01"</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"01-公保"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"02"</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"02-勞保"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"03"</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"03-勞工退休金"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"04"</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"04-健保"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"05"</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"05-退撫基金"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"全部"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3><span id="watch">$watch</span></h3>
+<p><a href="https://code.angularjs.org/1.2.6/docs/api/ng.$rootScope.Scope" target="_blank" rel="noopener">https://code.angularjs.org/1.2.6/docs/api/ng.$rootScope.Scope</a></p>
+<h3><span id="ng-grid">ng-grid</span></h3>
+<p><a href="https://github.com/angular-ui/ng-grid-legacy/wiki" target="_blank" rel="noopener">https://github.com/angular-ui/ng-grid-legacy/wiki</a></p>
+<h3><span id="eac108ejs">eac108e.js</span></h3>
+<p>js 呼叫 rest api</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$scope.query = <span class="function"><span class="keyword">function</span>(<span class="params">ped, omitAlerts</span>) </span>&#123;</span><br><span class="line">            ped = ped || ($scope.model ? $scope.model.ped : <span class="string">""</span>);</span><br><span class="line">            <span class="comment">// var result = eac108eService.find(&#123;ped:ped&#125;,omitAlerts||false);</span></span><br><span class="line">            <span class="keyword">var</span> result = eac108eService.findAll(<span class="string">'rest/find/all'</span>, &#123;</span><br><span class="line">                ped: ped</span><br><span class="line">            &#125;, omitAlerts || <span class="literal">false</span>);</span><br><span class="line">            result.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (response) &#123;</span><br><span class="line">                    state.query();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (angular.isArray(response)) &#123;</span><br><span class="line">                    $scope.gridData = response;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    $scope.gridData = [ response ];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3><span id="brt306ehtml-amp-brt306ejs-解說">brt306e.html &amp; brt306e.js 解說</span></h3>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-Hant-TW"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>代繳作業繳費期限維護 - BRT306E<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">th:substituteby</span>=<span class="string">"fragments/head_meta :: meta"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">meta</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">th:substituteby</span>=<span class="string">"fragments/resources :: head_resources"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">meta</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:substituteby</span>=<span class="string">"fragments/body_header :: body_header"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span> <span class="attr">data-ng-app</span>=<span class="string">"brt306eApp"</span>&gt;</span> <span class="comment">&lt;!-- 宣告angularjs 作用域 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span> <span class="attr">data-ng-controller</span>=<span class="string">"brt306eController"</span>&gt;</span> <span class="comment">&lt;!-- 宣告 controller 範圍和對應的 name --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 宣告一個 form (form-inline), 通常會給一個 name, 為了給驗證元件使用 --&gt;</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment">&lt;!-- data-c-form-validation: 如果此 FORM 要加上驗證 必須加上 --&gt;</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment">&lt;!-- data-c-enter-tab: 依照 tabindex 的順序按 enter 自動跳欄 --&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 按下 enter 時自動跳到下一個欄位包含所有的 input、select、button， 若 tabIndexThreshold 有設定時，--&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--則 tabIndexThreshold&lt; tabindex 以下的欄位 ，按下enter時不會進入。 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-inline"</span> <span class="attr">name</span>=<span class="string">"brt306eForm"</span> <span class="attr">data-c-form-validation</span>=<span class="string">"&#123;displayTrigger:'none'&#125;"</span></span></span><br><span class="line"><span class="tag">                        <span class="attr">data-c-enter-tab</span>=<span class="string">"&#123;tabIndexThreshold:1&#125;"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel panel-info"</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel-heading col-sm-12"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">"panel-title"</span>&gt;</span></span><br><span class="line">                                    <span class="comment">&lt;!-- $&#123;FUNCTION_ID&#125; 固定由後端讀取而來, 固定寫即可 --&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;FUNCTION_ID&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"text-muted"</span>&gt;</span>代繳作業繳費期限維護<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel-body"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row-fluid"</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-12 text-right"</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">data-ng-click</span>=<span class="string">"create()"</span></span></span><br><span class="line"><span class="tag">                                                <span class="attr">tabindex</span>=<span class="string">"3"</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-plus"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 新增</span><br><span class="line">                                            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">data-ng-click</span>=<span class="string">"reset()"</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-refresh"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 清除</span><br><span class="line">                                            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">data-ng-click</span>=<span class="string">"remove()"</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-remove"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 刪除</span><br><span class="line">                                            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">data-ng-click</span>=<span class="string">"query(true)"</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-search"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 查詢</span><br><span class="line">                                            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel panel-info"</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel-body"</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-4"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-7"</span>&gt;</span></span><br><span class="line">                                                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-3 text-right"</span>&gt;</span></span><br><span class="line">                                                            <span class="tag">&lt;<span class="name">label</span>&gt;</span>付款類別<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-5"</span>&gt;</span></span><br><span class="line">                                                            <span class="comment">&lt;!-- data-c-validate = &#123;函式名稱 : 要帶入顯示訊息內的參數，若沒有則寫true。&#125;  --&gt;</span></span><br><span class="line">                                                            <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"item"</span> <span class="attr">name</span>=<span class="string">"item"</span> <span class="attr">class</span>=<span class="string">"form-control"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">data-ng-model</span>=<span class="string">"model.item"</span> <span class="attr">data-c-validate</span>=<span class="string">"&#123;checkItem : true&#125;"</span>&gt;</span></span><br><span class="line">                                                                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span>&amp;nbsp;&amp;nbsp;&amp;nbsp;全部<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                                                                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"01"</span>&gt;</span>01-公保<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                                                                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"02"</span>&gt;</span>02-勞保<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                                                                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"03"</span>&gt;</span>03-勞工退休金<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                                                                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"04"</span>&gt;</span>04-健保<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                                                                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"05"</span>&gt;</span>05-退撫基金<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                                                            <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-3 text-right"</span>&gt;</span></span><br><span class="line">                                                            <span class="tag">&lt;<span class="name">label</span>&gt;</span>款項所屬年月<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                        <span class="comment">&lt;!-- dateValidation 此函式 在 customValidation.js --&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-9"</span>&gt;</span></span><br><span class="line">                                                            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"payYyymm"</span> <span class="attr">name</span>=<span class="string">"payYyymm"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">data-ng-model</span>=<span class="string">"model.payYyymm"</span> <span class="attr">data-ui-mask</span>=<span class="string">"99999"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">data-c-validate</span>=<span class="string">"&#123;dateValidation : ['yyyMM','Minguo'],messages:&#123;dateValidation:'年月錯誤 (YYYMM)'&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">data-ng-keydown</span>=<span class="string">"findEndDateByEnter($event)"</span> <span class="attr">style</span>=<span class="string">"width: 35%;"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">tabindex</span>=<span class="string">"1"</span> <span class="attr">required</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-3 text-right"</span>&gt;</span></span><br><span class="line">                                                            <span class="tag">&lt;<span class="name">label</span>&gt;</span>代繳期限<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-9"</span>&gt;</span></span><br><span class="line">                                                            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"endDate"</span> <span class="attr">name</span>=<span class="string">"endDate"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">data-ng-model</span>=<span class="string">"model.endDate"</span> <span class="attr">style</span>=<span class="string">"width: 40%;"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">data-c-validate</span>=<span class="string">"&#123;dateValidation : ['yyyMMdd','Minguo'], checkEndDate:true, messages:&#123;dateValidation:'代繳期限錯誤!!'&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">                                                                <span class="attr">tabindex</span>=<span class="string">"2"</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row text-center"</span>&gt;</span></span><br><span class="line">                                        <span class="comment">&lt;!-- 使用  ng-grid 元件 --&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-style"</span> <span class="attr">data-ng-grid</span>=<span class="string">"itemGrid"</span> <span class="attr">style</span>=<span class="string">"display: inline-block; height: 400px; width: 520px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:substituteby</span>=<span class="string">"fragments/body_footer :: footer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:substituteby</span>=<span class="string">"fragments/resources :: body_resources"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">th:src</span>=<span class="string">"@&#123;/scripts/brt306e.js&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> app = angular.module(<span class="string">"brt306eApp"</span>, [ <span class="string">'ntaCommonModule'</span>]); <span class="comment">// 都一定會注入 ntaCommonModule</span></span><br><span class="line"></span><br><span class="line">    app.factory(<span class="string">'brt306eService'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">cResource</span>)</span>&#123; <span class="comment">//注入 cResource 來使用框架提供的 ajax 方法,</span></span><br><span class="line"></span><br><span class="line">    	<span class="comment">// cResource 第一個參數 url pattern, 參數物件</span></span><br><span class="line">    	<span class="comment">// 這裡只有 下面 remove 會用到, 為了對應後端 rest api url</span></span><br><span class="line"></span><br><span class="line">    	<span class="comment">/*@RequestMapping(value = "/&#123;payYyymm&#125;/&#123;item&#125;", method = RequestMethod.DELETE)</span></span><br><span class="line"><span class="comment">          public @ResponseBody</span></span><br><span class="line"><span class="comment">          void delete(@PathVariableModel Brt352faId id, Alerter alerter) &#123;*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> resource = cResource(<span class="string">'rest/:payYyymm/:item'</span>, &#123;<span class="attr">payYyymm</span> :<span class="string">"@payYyymm"</span>, <span class="attr">item</span> :<span class="string">"@item"</span>&#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果只要用execute, 宣告這樣即可 var resource = cResource('rest', &#123;&#125;);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            remove : <span class="function"><span class="keyword">function</span>(<span class="params">model</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> resource.remove(model); <span class="comment">// delete</span></span><br><span class="line">            &#125;,</span><br><span class="line">            execute : <span class="function"><span class="keyword">function</span> (<span class="params">url , param, showAlerts, clearAlerts</span>)</span>&#123;</span><br><span class="line">            	<span class="comment">// omitAlerts: 忽略這次 ajax 的噴錯或警告, clearAlerts: 是否清除 alert</span></span><br><span class="line">                <span class="keyword">var</span> options = &#123;<span class="string">'omitAlerts'</span>: !showAlerts, <span class="string">'clearAlerts'</span>: clearAlerts&#125;;</span><br><span class="line">                <span class="keyword">return</span> resource.execute(url , param, options);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注入所需的 物件 $scope, brt306eService, alerter, cValidation</span></span><br><span class="line">    app.controller(<span class="string">'brt306eController'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, brt306eService, alerter, cValidation</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">        $scope.addSpaces = <span class="function"><span class="keyword">function</span>(<span class="params">input</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> result = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">if</span>(input == <span class="string">''</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</span><br><span class="line">                    result += <span class="built_in">String</span>.fromCharCode(<span class="number">160</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//初始</span></span><br><span class="line">        <span class="keyword">var</span> init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            $scope.model = &#123;&#125;;</span><br><span class="line">            $scope.itemData = []; <span class="comment">// or $scope.itemData.length = 0</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        init();</span><br><span class="line">        $scope.model.item = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//帶出EndDate</span></span><br><span class="line">        $scope.findEndDateByEnter = <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</span><br><span class="line">        	<span class="comment">// 檢查 是否按下的案件是 enter (13) 並檢查 payYyymm 這欄位是不是有通過檢核</span></span><br><span class="line">            <span class="keyword">if</span>($event.keyCode == <span class="number">13</span> &amp;&amp; $scope.validate($scope.brt306eForm.payYyymm)) &#123;</span><br><span class="line"></span><br><span class="line">            	<span class="comment">//呼叫 後端 findEndDate rest api</span></span><br><span class="line">                <span class="keyword">var</span> result = brt306eService.execute(<span class="string">'rest/findEndDate'</span>, $scope.model);</span><br><span class="line">                result.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;<span class="comment">//針對回傳做事</span></span><br><span class="line">                	<span class="comment">//沒有錯誤發生時執行以下</span></span><br><span class="line">                	<span class="keyword">if</span>(response) &#123;</span><br><span class="line">                        $scope.model.endDate = response.endDate;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//查詢 load grid</span></span><br><span class="line">        $scope.query = <span class="function"><span class="keyword">function</span>(<span class="params">showAlerts</span>) </span>&#123;</span><br><span class="line">        	<span class="comment">//呼叫 後端 findGrid rest api</span></span><br><span class="line">            <span class="keyword">var</span> result = brt306eService.execute(<span class="string">'rest/findGrid'</span>, $scope.model, showAlerts);</span><br><span class="line">            result.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;<span class="comment">//針對回傳做事</span></span><br><span class="line">            	<span class="comment">//沒有錯誤發生時執行以下</span></span><br><span class="line">            	<span class="keyword">if</span>(response) &#123;</span><br><span class="line">                    $scope.itemData = response;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//新增</span></span><br><span class="line">        $scope.create = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">           <span class="comment">// 在 js 檢查這三個欄位是否通過, 記得 要檢核的欄位要有 name</span></span><br><span class="line">           <span class="comment">// 如果是針對整個 form 的欄位都要檢查  $scope.validate($scope.brt306eForm)</span></span><br><span class="line">            <span class="keyword">if</span>($scope.validate($scope.brt306eForm.item, $scope.brt306eForm.payYyymm, $scope.brt306eForm.endDate)) &#123;</span><br><span class="line"></span><br><span class="line">            	<span class="comment">//呼叫 後端create rest api</span></span><br><span class="line">                <span class="keyword">var</span> result = brt306eService.execute(<span class="string">'rest/create'</span>, $scope.model, <span class="literal">true</span>);</span><br><span class="line">                result.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;  <span class="comment">//針對回傳做事</span></span><br><span class="line">                	<span class="comment">//沒有錯誤發生時執行以下</span></span><br><span class="line">                    $scope.model.payYyymm = <span class="string">""</span>;</span><br><span class="line">                    $scope.model.endDate = <span class="string">""</span>;</span><br><span class="line">                    $scope.query();</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//刪除</span></span><br><span class="line">        $scope.remove = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            bootbox.confirm(<span class="string">"是否確定刪除"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123; <span class="comment">//呼叫 bootbox 元件</span></span><br><span class="line">                <span class="keyword">if</span> (result)&#123; <span class="comment">// 如果按下確定</span></span><br><span class="line"></span><br><span class="line">                	<span class="comment">//呼叫 後端 刪除 rest api</span></span><br><span class="line">                    <span class="keyword">var</span> result = brt306eService.remove($scope.model);</span><br><span class="line">                    result.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123; <span class="comment">//針對回傳做事</span></span><br><span class="line">                        init(); <span class="comment">//沒有錯誤發生時執行這</span></span><br><span class="line">                    &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">                        alerter.fatal(<span class="string">"無資料可刪除! 失敗!"</span>); <span class="comment">//有錯誤發生時執行這</span></span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//做清除</span></span><br><span class="line">        $scope.reset = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            init(); <span class="comment">//呼叫初始</span></span><br><span class="line">            alerter.clear(); <span class="comment">//清除 alerter</span></span><br><span class="line">            $scope.clearValidationMessages(); <span class="comment">//用來清除所有的驗證錯誤</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//gird 欄位定義變數</span></span><br><span class="line">        $scope.itemGridCols = [ &#123;<span class="attr">field</span>:<span class="string">'item'</span>, <span class="attr">width</span>:<span class="string">'120px'</span>, <span class="attr">displayName</span>:<span class="string">'付款類別'</span>, <span class="attr">cellFilter</span>: <span class="string">"itemFilter"</span>&#125;,</span><br><span class="line">                                &#123;<span class="attr">field</span>:<span class="string">'payYyymm'</span>, <span class="attr">width</span>:<span class="string">'100px'</span>, <span class="attr">displayName</span>:<span class="string">'款項年月'</span>&#125;,</span><br><span class="line">                                &#123;<span class="attr">field</span>:<span class="string">'endDate'</span>, <span class="attr">width</span>:<span class="string">'100px'</span>, <span class="attr">displayName</span>:<span class="string">'代繳期限'</span>&#125;,</span><br><span class="line">                                &#123;<span class="attr">field</span>:<span class="string">'uids'</span>, <span class="attr">width</span>:<span class="string">'100px'</span>, <span class="attr">displayName</span>:<span class="string">'異動人'</span>&#125;,</span><br><span class="line">                                &#123;<span class="attr">field</span>:<span class="string">'mdate'</span>, <span class="attr">width</span>:<span class="string">'120px'</span>, <span class="attr">displayName</span>:<span class="string">'異動日期'</span>&#125; ];</span><br><span class="line">        <span class="comment">// grid 物件</span></span><br><span class="line">        $scope.itemGrid = &#123;</span><br><span class="line">                multiSelect : <span class="literal">false</span>, <span class="comment">//是否可多選</span></span><br><span class="line">                data : <span class="string">'itemData'</span>,   <span class="comment">// 資料來源 陣列變數名稱: 請用字串</span></span><br><span class="line">                columnDefs : <span class="string">'itemGridCols'</span>, <span class="comment">//gird 欄位定義變數名稱: 請用字串</span></span><br><span class="line">                enableColumnResize: <span class="literal">true</span>, <span class="comment">//欄位是否可以調整大小</span></span><br><span class="line">                selectedItems: $scope.selectedItemData, <span class="comment">//選取那些資料</span></span><br><span class="line">                afterSelectionChange : <span class="function"><span class="keyword">function</span>(<span class="params">rowItem</span>)</span>&#123; <span class="comment">// 選取後要做什麼事</span></span><br><span class="line">                    <span class="keyword">if</span> (rowItem.selected) &#123;</span><br><span class="line">                        $scope.model = angular.copy(rowItem.entity);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 自訂檢核</span></span><br><span class="line">        <span class="keyword">var</span> checkItem = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (value === <span class="string">''</span>) ? <span class="literal">false</span> : <span class="literal">true</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">        cValidation.register(<span class="string">'checkItem'</span>, checkItem, <span class="string">'付款類別錯誤!'</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> checkEndDate = <span class="function"><span class="keyword">function</span>(<span class="params">value, scope</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> payYyymm = <span class="built_in">parseInt</span>(scope.model.payYyymm + <span class="string">'01'</span>, <span class="number">10</span>);</span><br><span class="line">            <span class="keyword">var</span> endDate = <span class="built_in">parseInt</span>(scope.model.endDate, <span class="number">10</span>);</span><br><span class="line">            <span class="keyword">return</span> (payYyymm &gt; endDate) ? <span class="literal">false</span> : <span class="literal">true</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">        cValidation.register(<span class="string">'checkEndDate'</span>, checkEndDate, <span class="string">'代繳期限錯誤!!'</span>);</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//自訂 filter</span></span><br><span class="line">    app.filter(<span class="string">'itemFilter'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">switch</span>(input) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"01"</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"01-公保"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"02"</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"02-勞保"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"03"</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"03-勞工退休金"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"04"</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"04-健保"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"05"</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"05-退撫基金"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"全部"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h3><span id="references">References:</span></h3>
+<ul>
+<li><a href="http://www.angularjs.net.cn/tutorial/1.html" target="_blank" rel="noopener">AngularJs 官網-中文化</a></li>
+<li><a href="https://docs.angularjs.org/tutorial/step_00" target="_blank" rel="noopener">AngularJs 官網</a></li>
+<li><a href="https://blog.miniasp.com/post/2013/04/23/Front-end-Engineering-Fineart-An-Introduction-to-AngularJS.aspx" target="_blank" rel="noopener">介紹 - 前端工程的極致精品： AngularJS 開發框架介紹</a></li>
+<li><a href="https://ithelp.ithome.com.tw/users/20071512/ironman/695?page=1" target="_blank" rel="noopener">入門教學 - 入門AngularJS筆記與前端領域的學習筆記分享</a></li>
+<li><a href="https://ithelp.ithome.com.tw/users/20091340/ironman/761" target="_blank" rel="noopener">進階教學 - 我在前端 ng 時</a></li>
+<li><a href="https://hairui219.gitbooks.io/learning_angular/content/zh/" target="_blank" rel="noopener">學習AngularJS 1.x </a></li>
+</ul>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/11/26/env-and-RESTful-API/" data-toggle="tooltip" data-placement="top" title="舊專案必學技術整理 - 開發環境設定 & 前後端溝通(RESTful API) ">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/11/22/javascript-basic/" data-toggle="tooltip" data-placement="top" title="舊專案必學技術整理 - JavaScript 基礎概念">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">AngularJS 必會語法解說</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Two-way Data Binding</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text"></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">ng-controller &amp; $scope</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">$scope</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.3.1.</span> <span class="toc-nav-text">Scope as Data-Model</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text"></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">angularJS ng-model v.s. javascript &amp;&amp; JQuery</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">內嵌繫結 (Interpolation)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.7.</span> <span class="toc-nav-text">ng-bind</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.8.</span> <span class="toc-nav-text">ng-click</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.9.</span> <span class="toc-nav-text">ng-show/ng-hide</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.10.</span> <span class="toc-nav-text">ng-init</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.11.</span> <span class="toc-nav-text">ng-repeat</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.12.</span> <span class="toc-nav-text">track by $index</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.13.</span> <span class="toc-nav-text">input 欄位</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.14.</span> <span class="toc-nav-text">input checkbox</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.15.</span> <span class="toc-nav-text">ng-option</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.16.</span> <span class="toc-nav-text">pipe filter</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.17.</span> <span class="toc-nav-text">自訂 pipe filter</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.18.</span> <span class="toc-nav-text">$watch</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.19.</span> <span class="toc-nav-text">ng-grid</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.20.</span> <span class="toc-nav-text">eac108e.js</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.21.</span> <span class="toc-nav-text">brt306e.html &amp; brt306e.js 解說</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.22.</span> <span class="toc-nav-text">References:</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#AngularJS" title="AngularJS">AngularJS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "timmybeefweb";
+    var disqus_identifier = "https://timmybeef.github.io/2018/11/24/AngularJS/";
+    var disqus_url = "https://timmybeef.github.io/2018/11/24/AngularJS/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/TimLin65070898">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/timmyBeef">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/tim-lin-5b6485171">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Tim Lin 2021 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://beantech.org">BeanTech</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://timmybeef.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://timmybeef.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":null,"autoNumber":"AMS"}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+
+</html>

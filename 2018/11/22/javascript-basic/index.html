@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="1oh3VluWAkI2CDranTPnxXgiWq6n6JqXrfhMjIO2yXY">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TimmyBeef&#39;s Blog">
+    <meta name="keyword" content="TimmyBeef&#39;s Blog">
+    <link rel="shortcut icon" href="/img/b_letter.jpg">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          舊專案必學技術整理 - JavaScript 基礎概念 - TimmyBeef&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://timmybeef.github.io/2018/11/22/javascript-basic/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/header_img/archive-bg.png')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/signature5c48060491c81.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                            
+                        </div>
+                        <h1>舊專案必學技術整理 - JavaScript 基礎概念</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Tim Lin on
+                            2018-11-22
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">TimmyBeef&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="javascript-基礎概念">JavaScript 基礎概念</span></h1>
+<h3><span id="變數">變數</span></h3>
+<p>都使用 var (JS ES6 後有像是 let, const 等其他關鍵字, 但本案相關開發請都用 var)</p>
+<h3><span id="資料型態">資料型態</span></h3>
+<ul>
+<li>主要的原始資料類型:
+<ul>
+<li>數字(Number)</li>
+<li>字串(String)</li>
+<li>布林(Boolean)</li>
+</ul>
+</li>
+<li>特殊的原始資料類型:
+<ul>
+<li>空(null)</li>
+<li>未定義(undefined)</li>
+<li>符號(Symbol)</li>
+</ul>
+</li>
+<li>複合型(composite)或參考型(reference)的資料類型:
+<ul>
+<li>陣列(Array)</li>
+<li>物件(Object)</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://jsbin.com/hafejilazo/edit?js,console" target="_blank" rel="noopener">https://jsbin.com/hafejilazo/edit?js,console</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="number">37</span>); <span class="comment">//'number'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">NaN</span>); <span class="comment">//'number'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="string">''</span>); <span class="comment">//'string'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> (<span class="keyword">typeof</span> <span class="number">1</span>)); <span class="comment">//'string'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">true</span>); <span class="comment">//'boolean'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">null</span>); <span class="comment">//'object'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;); <span class="comment">//'function'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//值: undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(a));<span class="comment">//"undefined"</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">100</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//值: 100</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(a));<span class="comment">//"number"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//console.log(b);//顯示 not defined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//驚嘆號(!)之前有說過是個邏輯運算符，名稱為"Logic NOT"，用在布林值上具有反轉(Inverted)的功能，雙驚嘆號(!!)就等於"反轉再反轉"，等於轉回原本的布林值:</span></span><br><span class="line"><span class="keyword">var</span> aBool = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(aBool);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bBool = !aBool; <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(bBool);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cBool = !!aBool; <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(cBool);</span><br><span class="line"></span><br><span class="line"><span class="comment">//雙驚嘆號(!!)並不單純是在這樣用的，它是為了要轉換一些可以形成布林值的情況值，列出如下:</span></span><br><span class="line"><span class="comment">//false: 0, -0, null, false, NaN, undefined, 空白字串('')</span></span><br><span class="line"><span class="comment">//true: 不是false的其他情況</span></span><br><span class="line"><span class="keyword">var</span> aBool = !!<span class="number">0</span>; <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(aBool);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bBool = !!<span class="string">'false'</span>; <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(bBool);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cBool = !!<span class="literal">NaN</span>; <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(cBool);</span><br></pre></td></tr></table></figure>
+<hr>
+<h3><span id="double-equals-vs-triple-equals">Double Equals vs. Triple Equals</span></h3>
+<ul>
+<li>== , !=
+<ul>
+<li>會左右幫你自動轉型後比較</li>
+</ul>
+</li>
+<li>=== , !==
+<ul>
+<li>優先比較資料型態 在比值</li>
+</ul>
+</li>
+</ul>
+<p><strong>請盡量用 === 或 !==</strong> 來比較值</p>
+<p><a href="https://jsbin.com/nahuqojote/edit?js,console" target="_blank" rel="noopener">https://jsbin.com/nahuqojote/edit?js,console</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> == <span class="literal">false</span>); <span class="comment">//true, 自動型轉成 0, == , 相依性: 從左至右, 所以會以左邊為主來轉</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">3</span> + <span class="number">4</span> * <span class="number">5</span>; <span class="comment">// * 運算子優先性比 + 還高(先乘除後加減)</span></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//當運算子優先性相同，就依據相依性來判斷是左到右執行還是右到左執行。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//現在有兩個 &lt; 運算子，所以優先性是一樣的，那就再來看 &lt; 的相依性：</span></span><br><span class="line"><span class="comment">//&lt; 相依性為左到右，所以3 &lt; 2 &lt; 1 的執行順序是先比較3和2，再比較1。</span></span><br><span class="line"><span class="comment">//3 &lt; 2相比結果是false，接著再運行false &lt; 1的相比較。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//在JS中，true若被強制型轉成數值會是1，false被強制型轉成數值會是0。</span></span><br><span class="line"><span class="comment">//這裡的false因為與數值進行比較判斷，被JS自動型轉成0，變成0 &lt; 1，而0 &lt; 1成立，true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> &lt; <span class="number">2</span> &lt; <span class="number">1</span>);  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3><span id="自動轉型">自動轉型</span></h3>
+<ul>
+<li>string 做加法運算, 自動轉型成 string</li>
+<li>減乘除運算 自動轉型 number</li>
+</ul>
+<p><a href="https://jsbin.com/cagoyenovi/1/edit?js,console" target="_blank" rel="noopener">https://jsbin.com/cagoyenovi/1/edit?js,console</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span> + <span class="string">'2'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(a));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"================================================="</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="string">'ithome'</span> + <span class="number">30</span>;</span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(b));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"================================================="</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = <span class="string">'10'</span> * <span class="number">8</span></span><br><span class="line"><span class="built_in">console</span>.log(c);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(b));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"================================================="</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> d = <span class="string">'10'</span> - <span class="number">8</span>;</span><br><span class="line"><span class="built_in">console</span>.log(d);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(d));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"================================================="</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f = <span class="string">'ithome'</span> - <span class="number">30</span>;</span><br><span class="line"><span class="built_in">console</span>.log(f); <span class="comment">//NaN, Not a Number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(f)); </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"================================================="</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>if( ) 判斷式
+<ul>
+<li>0 , NaN , ‘’ , null , undefinied 自動轉型 false</li>
+<li>其餘皆自動轉型 true : 有值的狀態下, {}, [], ’ ’ 等等…</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://jsbin.com/bozizitanu/edit?js,console" target="_blank" rel="noopener">https://jsbin.com/bozizitanu/edit?js,console</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 0 , NaN , '' , null , undefinied 自動轉型 false</span></span><br><span class="line"><span class="comment">// 其餘皆自動轉型 true : 有值的狀態下, &#123;&#125;, [], ' ' 等等...</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="string">'ithome'</span> - <span class="number">30</span>;</span><br><span class="line"><span class="built_in">console</span>.log(f); <span class="comment">//NaN, Not a Number</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(f) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'pass'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b;</span><br><span class="line"><span class="keyword">if</span>(!b) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'pass'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="string">'3332'</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'pass'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span>(c) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'pass'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3><span id="運算子優先序">運算子優先序</span></h3>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank" rel="noopener">https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Operator_Precedence</a></p>
+<p><a href="https://jsbin.com/nahuqojote/edit?js,console" target="_blank" rel="noopener">https://jsbin.com/nahuqojote/edit?js,console</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> == <span class="literal">false</span>); <span class="comment">//true, 自動型轉成 0, == , 相依性: 從左至右, 所以會以左邊為主來轉</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">3</span> + <span class="number">4</span> * <span class="number">5</span>; <span class="comment">// * 運算子優先性比 + 還高(先乘除後加減)</span></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//當運算子優先性相同，就依據相依性來判斷是左到右執行還是右到左執行。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//現在有兩個 &lt; 運算子，所以優先性是一樣的，那就再來看 &lt; 的相依性：</span></span><br><span class="line"><span class="comment">//&lt; 相依性為左到右，所以3 &lt; 2 &lt; 1 的執行順序是先比較3和2，再比較1。</span></span><br><span class="line"><span class="comment">//3 &lt; 2相比結果是false，接著再運行false &lt; 1的相比較。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//在JS中，true若被強制型轉成數值會是1，false被強制型轉成數值會是0。</span></span><br><span class="line"><span class="comment">//這裡的false因為與數值進行比較判斷，被JS自動型轉成0，變成0 &lt; 1，而0 &lt; 1成立，true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> &lt; <span class="number">2</span> &lt; <span class="number">1</span>);  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3><span id="js-裡稀奇古怪靈異事件一大堆">js 裡稀奇古怪靈異事件一大堆</span></h3>
+<p>•<a href="http://zero.milosz.ca/" target="_blank" rel="noopener">http://zero.milosz.ca/</a><br>
+•<a href="http://wtfjs.com/" target="_blank" rel="noopener">http://wtfjs.com/</a></p>
+<h3><span id="陣列">陣列</span></h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.w3schools.com/js/js_arrays.asp" target="_blank" rel="noopener">https://www.w3schools.com/js/js_arrays.asp</a></p>
+<hr>
+<h3><span id="物件">物件</span></h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">name</span>: <span class="string">'Simon'</span>,<span class="attr">isF2E</span>: <span class="literal">true</span>&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://jsbin.com/xezuyikigo/edit?js,console" target="_blank" rel="noopener">https://jsbin.com/xezuyikigo/edit?js,console</a><br>
+<a href="https://www.w3schools.com/js/js_objects.asp" target="_blank" rel="noopener">https://www.w3schools.com/js/js_objects.asp</a></p>
+<hr>
+<h3><span id="函式function就是物件">函式(function)就是物件</span></h3>
+<p>在JS這個物件導向語言裡，其函式的特性被稱為一級函式。<br>
+一級函式First Class Functions</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//匿名函式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//有名稱的函式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sport</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">因為函式就是物件，所以我們可以接著這樣寫</span><br><span class="line"></span><br><span class="line">sport.basketball  = <span class="string">'打籃球'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(sport.basketball); <span class="comment">// 打籃球</span></span><br><span class="line"></span><br><span class="line">JS 函式就是物件，物件可以自由擴增屬性，我們等於對 sport 這個函式物件，</span><br><span class="line">新增一個 basketball 屬性，其值為字串打籃球。</span><br><span class="line"></span><br><span class="line">所以也可以寫成這樣, 函式物件</span><br><span class="line"><span class="keyword">var</span> sport = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sport(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<p><a href="https://jsbin.com/gocofesiha/edit?js,console" target="_blank" rel="noopener">https://jsbin.com/gocofesiha/edit?js,console</a><br>
+<a href="https://jsbin.com/wozilisedo/1/edit?js,console" target="_blank" rel="noopener">https://jsbin.com/wozilisedo/1/edit?js,console</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sport = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sport(<span class="string">'test'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以把 Function Expression 表示式當成參數傳進去</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">log(a);</span><br><span class="line"></span><br><span class="line">log(<span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logf</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">	a();</span><br><span class="line">&#125;</span><br><span class="line">logf(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"狗"</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//--------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sport = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sport(<span class="string">'test'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">log(sport(<span class="string">'test'</span>));</span><br></pre></td></tr></table></figure>
+<hr>
+<h3><span id="hoisting-提升">Hoisting 提升</span></h3>
+<p>函式 與其 函式 內容(定義):會存至記憶體，所以可以正確的呼叫，呼叫後建立這個函式的執行環境　<br>
+變數(var): 也會被創造存至記憶體，但其賦值內容並沒有再創造時跟著被進去</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">'Hello World!'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Called b!'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p><a href="https://jsbin.com/cahapugisa/edit?js,console" target="_blank" rel="noopener">https://jsbin.com/cahapugisa/edit?js,console</a><br>
+v.s.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">b(); </span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="string">'Hello World!'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Called b!'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://jsbin.com/nujawaqidi/edit?js,console" target="_blank" rel="noopener">https://jsbin.com/nujawaqidi/edit?js,console</a></p>
+<p>ex1:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cat</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"貓咪"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ex2:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dog = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"狗"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dog();</span><br></pre></td></tr></table></figure>
+<p>ex3:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dog();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> dog = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"狗"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3><span id="loop">loop</span></h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> count = <span class="number">0</span> ; count &lt; <span class="number">10</span> ; count++)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(count)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3><span id="references">References:</span></h3>
+<ul>
+<li><a href="https://ithelp.ithome.com.tw/users/20104221/ironman/1403" target="_blank" rel="noopener">克服JS的奇怪部分</a></li>
+<li><a href="https://eyesofkids.gitbooks.io/javascript-start-from-es6/content/part4/prototype.html" target="_blank" rel="noopener">從ES6開始的JavaScript學習生活</a></li>
+<li><a href="https://www.w3schools.com/js/default.asp" target="_blank" rel="noopener">JavaScript - w3Schools</a></li>
+</ul>
+<hr>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/11/24/AngularJS/" data-toggle="tooltip" data-placement="top" title="舊專案必學技術整理 - AngularJS ">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/11/21/bootstrap/" data-toggle="tooltip" data-placement="top" title="舊專案必學技術整理 - Bootstrap ">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">JavaScript 基礎概念</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">變數</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">資料型態</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">Double Equals vs. Triple Equals</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">自動轉型</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.5.</span> <span class="toc-nav-text">運算子優先序</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.6.</span> <span class="toc-nav-text">js 裡稀奇古怪靈異事件一大堆</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.7.</span> <span class="toc-nav-text">陣列</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.8.</span> <span class="toc-nav-text">物件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.9.</span> <span class="toc-nav-text">函式(function)就是物件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.10.</span> <span class="toc-nav-text">Hoisting 提升</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.11.</span> <span class="toc-nav-text">loop</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.12.</span> <span class="toc-nav-text">References:</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "timmybeefweb";
+    var disqus_identifier = "https://timmybeef.github.io/2018/11/22/javascript-basic/";
+    var disqus_url = "https://timmybeef.github.io/2018/11/22/javascript-basic/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/TimLin65070898">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/timmyBeef">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/tim-lin-5b6485171">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Tim Lin 2021 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://beantech.org">BeanTech</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://timmybeef.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://timmybeef.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":null,"autoNumber":"AMS"}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+
+</html>

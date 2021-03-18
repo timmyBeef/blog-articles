@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="1oh3VluWAkI2CDranTPnxXgiWq6n6JqXrfhMjIO2yXY">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TimmyBeef&#39;s Blog">
+    <meta name="keyword" content="TimmyBeef&#39;s Blog">
+    <link rel="shortcut icon" href="/img/b_letter.jpg">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          JHipster 6 快速建出你想要的網站! - TimmyBeef&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://timmybeef.github.io/2019/06/28/JHipster6/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('what-is-jhipster.png')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/signature5c48060491c81.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Angular" title="Angular">Angular</a>
+                            
+                              <a class="tag" href="/tags/#JHipster" title="JHipster">JHipster</a>
+                            
+                              <a class="tag" href="/tags/#Spring Boot" title="Spring Boot">Spring Boot</a>
+                            
+                        </div>
+                        <h1>JHipster 6 快速建出你想要的網站!</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Tim Lin on
+                            2019-06-28
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">TimmyBeef&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>如果想要快速建立一個專案雛形…但又不想自己搞 Spring security 那些的架構…怎辦呢? JHipster 真的很猛…! 都幫你搞定了!</p>
+</blockquote>
+<p>簡單來說 JHipster 就是一個 Web application 產生器! 可以幫你產出基於 Spring Boot + Angular / React / Vue 的前後端架構和 Spring microservices…超神<br>
+<img src="https://i.imgur.com/s6pOJDJ.png" alt=""></p>
+<p>官網</p>
+<ul>
+<li><a href="https://www.jhipster.tech/" target="_blank" rel="noopener">https://www.jhipster.tech/</a></li>
+</ul>
+<p>Jhipster 6 video tutorial in 17 mins</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=uQqlO3IGpTU&amp;feature=youtu.be" target="_blank" rel="noopener">https://www.youtube.com/watch?v=uQqlO3IGpTU&amp;feature=youtu.be</a></li>
+<li><a href="https://github.com/mraible/jhipster6-demo" target="_blank" rel="noopener">https://github.com/mraible/jhipster6-demo</a></li>
+</ul>
+<p>強國翻譯中文檔 (說真的…翻得不大好)</p>
+<ul>
+<li><a href="https://www.jhipster-cn.tech/" target="_blank" rel="noopener">https://www.jhipster-cn.tech/</a></li>
+</ul>
+<hr>
+<p>建立方式也很簡單…</p>
+<h1><span id="專案建立方式">專案建立方式</span></h1>
+<h2><span id="jhipster-quick-start">JHipster Quick Start</span></h2>
+<ul>
+<li>安裝 JHipster</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g generator-jhipster</span><br></pre></td></tr></table></figure>
+<ul>
+<li>建一個目錄, 並進入目錄</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myApp &amp;&amp; cd myApp</span><br></pre></td></tr></table></figure>
+<hr>
+<p>有三種方式可以產生專案:</p>
+<h3><span id="1-透過命令列選擇">1. 透過命令列選擇</span></h3>
+<ul>
+<li>執行 <code>jhipster</code>, 照畫面選項選擇你要的專案內容</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jhipster</span><br></pre></td></tr></table></figure>
+<hr>
+<p><img src="https://i.imgur.com/VDNSp1n.png" alt=""></p>
+<hr>
+<p><a href="https://www.jhipster.tech/creating-an-app/" target="_blank" rel="noopener">https://www.jhipster.tech/creating-an-app/</a></p>
+<p>Q1. Which type of application would you like to create?</p>
+<ul>
+<li>Monolithic application: 單一專案</li>
+<li>Microservice application: 微服務架構的 service</li>
+<li>Microservice gateway: 微服務閘道器，為微服務請求進行路由和安全</li>
+<li>JHipster UAA server: 基於 OAuth2 的安全認證微服務，要搭配後面的設定</li>
+</ul>
+<p>Q4. Do you want to use the JHipster Registry to configure, monitor and scale your application?</p>
+<ul>
+<li>JHipster Registry - 微服務用</li>
+</ul>
+<blockquote>
+<p>連認證都幫你做好了!<br>
+Q5. Which type of authentication would you like to use?</p>
+</blockquote>
+<ul>
+<li>JWT authentication: 使用 <a href="https://yami.io/jwt/" target="_blank" rel="noopener">JSON Web Token</a></li>
+<li>HTTP Session Authentication：傳統 session 認證的機制</li>
+<li>OAuth 2.0 / OIDC Authentication: 使用 OpenID Connect server，要搭配使用 Keycloak 或者 Okta</li>
+<li>Authentication with JHipster UAA server: 此種方式必須提前生成 JHipster UAA Server (Q1的選項)，基於 OAuth2 的驗證服務</li>
+</ul>
+<p>jhipster UI 主題<br>
+<a href="https://bootswatch.com" target="_blank" rel="noopener">https://bootswatch.com</a></p>
+<hr>
+<h3><span id="2-透過-yo-rcjson-產生專案">2. 透過 .yo-rc.json 產生專案</span></h3>
+<ul>
+<li>
+<p>如果之前是透過命令列產生專案的話, 一定會產生一個 .yo-rc.json, 我們可以複製之前專案既有的 .yo-rc.json 修改參數後, 重新產生</p>
+</li>
+<li>
+<p>.yo-rc.json 是 Yeoman 產生器的定義檔<br>
+<a href="https://yeoman.io/learning/" target="_blank" rel="noopener">yeoman</a></p>
+</li>
+</ul>
+<blockquote>
+<p>Yeoman 是一個專案架構產生器，裡面有許多 Generator 方便開發者針對專案需求快速產生一個專案資料夾和所需的開發工具套件。</p>
+</blockquote>
+<p><img src="https://i.imgur.com/dD1tIte.png" alt=""></p>
+<ul>
+<li>在空資料夾內, 放入 .yo-rc.json, 執行 <code>jhipster</code>, 就會依 .yo-rc.json 產生專案</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jhipster</span><br></pre></td></tr></table></figure>
+<hr>
+<h3><span id="3-使用-jdl-file-產生專案-只適用-jhipster-6">3. 使用 jdl file 產生專案 (只適用 JHipster 6)</span></h3>
+<ul>
+<li>
+<p>使用 jdl file 直接產生, 建立一個 app.jh 檔案</p>
+<ul>
+<li>參數表<br>
+<a href="https://www.jhipster.tech/jdl/#available-application-options" target="_blank" rel="noopener">https://www.jhipster.tech/jdl/#available-application-options</a></li>
+</ul>
+</li>
+<li>
+<p>app.jh</p>
+</li>
+</ul>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 沒定義的其他都預設參數</span></span><br><span class="line"><span class="class">application </span>&#123;</span><br><span class="line">  <span class="class">config </span>&#123;</span><br><span class="line">    baseName jwtDemo</span><br><span class="line">    authenticationType jwt</span><br><span class="line">    languages [zh-tw, en]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>執行</li>
+</ul>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">jhipster</span> <span class="keyword">import</span>-jdl app.jh</span><br></pre></td></tr></table></figure>
+<h3><span id="啟動專案">啟動專案</span></h3>
+<ul>
+<li>
+<p>專案產生成功後, 會看到下列訊息…<br>
+<img src="https://i.imgur.com/I5iyh2h.png" alt=""></p>
+<p>後端可以在 cmd 所屬目錄輸入直接跑 <code>./mvnw</code> 就可以啟動 (因為是 spring-boot)<br>
+這裡我是選擇匯入到 Intellij 來跑</p>
+</li>
+<li>
+<p>啟動後端<br>
+把專案匯入 <code>Intellij</code>, 等 maven dependencies 跑完後 <code>Run 'AppDemoApp'</code></p>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/DXGfZOL.png" alt=""></p>
+<ul>
+<li>啟動前端<br>
+在 cmd 所屬目錄輸入 <code>npm start</code></li>
+</ul>
+<h3><span id="成功啟動的畫面">成功啟動的畫面</span></h3>
+<p><img src="https://i.imgur.com/n2SjAKA.png" alt=""></p>
+<h2><span id="自動產生-db-entities-和前後端程式">自動產生 db entities, 和前後端程式</span></h2>
+<ul>
+<li>利用 JDL Studio 建立你的 db entities, 設計完後可下載 <code>jhipster-jdl.jh</code><br>
+<a href="https://start.jhipster.tech/jdl-studio/" target="_blank" rel="noopener">https://start.jhipster.tech/jdl-studio/</a></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jhipster import-jdl jhipster-jdl.jh</span><br></pre></td></tr></table></figure>
+<p>jhipster-jdl.jh 例子:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">entity<span class="built_in"> Customer </span>&#123;</span><br><span class="line"></span><br><span class="line">	customerNumber String,</span><br><span class="line">	name String,</span><br><span class="line">	email String,</span><br><span class="line">	phoneNumber String,</span><br><span class="line">	registerDate Instant,</span><br><span class="line"><span class="built_in">	address </span>String</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">entity Bill &#123;</span><br><span class="line"></span><br><span class="line">	customerNumber String,</span><br><span class="line">	dueDate Instant,</span><br><span class="line">	totalAmount Long,</span><br><span class="line">	basicDegree Long,</span><br><span class="line">        normalDegree Long</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">relationship OneToMany &#123;</span><br><span class="line">	Customer&#123;bill&#125; <span class="keyword">to</span> Bill</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">paginate Customer, Bill with infinite-scroll</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>dummy data 怎麼來的? 如何不產生<br>
+<a href="https://stackoverflow.com/questions/56364432/when-jhipster-create-the-dummy-data-starting-from-jdl" target="_blank" rel="noopener">https://stackoverflow.com/questions/56364432/when-jhipster-create-the-dummy-data-starting-from-jdl</a></p>
+</li>
+<li>
+<p>產 entity 的詳細解說<br>
+<a href="https://www.jhipster.tech/creating-an-entity/" target="_blank" rel="noopener">https://www.jhipster.tech/creating-an-entity/</a></p>
+</li>
+<li>
+<p>從 DB 產生 JDL 檔案<br>
+<a href="https://github.com/Blackdread/sql-to-jdl" target="_blank" rel="noopener">Tool to translate SQL databases to JDL format of jHipster</a></p>
+</li>
+<li>
+<p>要刪除 H2 資料的話<br>
+刪除 h2db 資料夾<br>
+<img src="https://i.imgur.com/RChBDpc.png" alt=""></p>
+</li>
+</ul>
+<h2><span id="hot-deploy">hot deploy</span></h2>
+<p>產生完 entity 和前後端程式後</p>
+<ul>
+<li>
+<p>後端: 要按 build 讓 <a href="https://www.baeldung.com/spring-boot-devtools" target="_blank" rel="noopener">spring-boot-devtools</a> 啟動 Live Reload</p>
+</li>
+<li>
+<p>前端: 則是因為用 webpack 打包的所以會自動偵測到, 所以直接做 Live Reload (<a href="https://webpack.js.org/concepts/hot-module-replacement/" target="_blank" rel="noopener">Hot Module Replacement (HMR)</a>)</p>
+</li>
+</ul>
+<h1><span id="creating-a-spring-service">Creating a Spring service</span></h1>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jhipster spring-service 服務名稱</span><br><span class="line"></span><br><span class="line">// 建立 CustomerBillService</span><br><span class="line">jhipster spring-service CustomerBill</span><br></pre></td></tr></table></figure>
+<h1><span id="creating-dtos">Creating DTOs</span></h1>
+<p>可以利用 <code>lombok</code> 和 <code>mapstruct</code></p>
+<hr>
+<h1><span id="其他工具介紹">其他工具介紹</span></h1>
+<h1><span id="protractor">Protractor</span></h1>
+<p>前面安裝測試元件時記得要選</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">run</span><span class="bash"> e2e</span></span><br></pre></td></tr></table></figure>
+<h1><span id="swagger-ui">Swagger UI</span></h1>
+<ul>
+<li><a href="https://swagger.io/tools/swagger-ui/" target="_blank" rel="noopener">https://swagger.io/tools/swagger-ui/</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10191287" target="_blank" rel="noopener">Swagger UI 介紹</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10191439" target="_blank" rel="noopener">Swagger 轉成 PDF or Html API 文件</a></li>
+</ul>
+<p><img src="https://i.imgur.com/Q2vuK5a.png" alt=""></p>
+<p><img src="https://i.imgur.com/rTaxtov.png" alt=""></p>
+<h1><span id="h2-console">h2 console</span></h1>
+<p><a href="http://localhost:9000/h2-console" target="_blank" rel="noopener">http://localhost:9000/h2-console</a><br>
+<img src="https://i.imgur.com/9VpOMWX.png" alt=""></p>
+<p><img src="https://i.imgur.com/Y8igWp9.png" alt=""></p>
+<h2><span id="多語系目錄">多語系目錄</span></h2>
+<p><img src="https://i.imgur.com/W4764u8.png" alt=""></p>
+<h3><span id="修改預設語系">修改預設語系</span></h3>
+<p><img src="https://i.imgur.com/pM44VG5.png" alt=""></p>
+<p><img src="https://i.imgur.com/VTh2vFh.png" alt=""></p>
+<h2><span id="ui">UI</span></h2>
+<p>網站 layout<br>
+<img src="https://i.imgur.com/gPmbdLI.png" alt=""></p>
+<h3><span id="editorconfig">EditorConfig</span></h3>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># EditorConfig helps developers define and maintain consistent</span></span><br><span class="line"><span class="meta"># coding styles between different editors and IDEs</span></span><br><span class="line"><span class="meta"># editorconfig.org</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/ODAwhw1.png" alt=""></p>
+<h3><span id="jhipster-online">Jhipster Online</span></h3>
+<p><a href="https://start.jhipster.tech/#/" target="_blank" rel="noopener">https://start.jhipster.tech/#/</a></p>
+<h3><span id="securityutils-p32">SecurityUtils - p32</span></h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) &#123;</span><br><span class="line">    log.debug(<span class="string">"No user passed in, using current user: &#123;&#125;"</span>, SecurityUtils.getCurrentUserLogin());</span><br><span class="line">    points.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>SecurityUtils is a class JHipster provides when you create a project. I had to modify PointsResourceIntTest.java to be security-aware after making this change.</p>
+<h2><span id="jhipster-官方對各-ide-configuration">jhipster 官方對各 ide configuration</span></h2>
+<p><a href="https://www.jhipster.tech/configuring-ide/" target="_blank" rel="noopener">https://www.jhipster.tech/configuring-ide/</a></p>
+<h2><span id="intellij-設定及熱鍵">IntelliJ 設定及熱鍵</span></h2>
+<p><a href="https://hackmd.io/@nLfmseR4TNaK1gP1371IlA/BymhTAMz4" target="_blank" rel="noopener">https://hackmd.io/@nLfmseR4TNaK1gP1371IlA/BymhTAMz4</a></p>
+<h3><span id="後端其他會用到的-plugin">後端其他會用到的 plugin</span></h3>
+<h4><span id="lombok-需額外裝">lombok (需額外裝)</span></h4>
+<p><a href="https://www.baeldung.com/lombok-ide" target="_blank" rel="noopener">https://www.baeldung.com/lombok-ide</a></p>
+<ul>
+<li>加入 maven dependency, 和 annotationProcessorPaths</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">lombok.version</span>&gt;</span>1.18.8<span class="tag">&lt;/<span class="name">lombok.version</span>&gt;</span></span><br><span class="line"> ....</span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">   ...</span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;lombok.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   ....</span><br><span class="line"> <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment">&lt;!-- JHipster apt 是有特別定義正向表列的, 所以要加上--&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">annotationProcessorPaths</span>&gt;</span></span><br><span class="line">     .....</span><br><span class="line">     <span class="tag">&lt;<span class="name">path</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;lombok.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!-- jhipster-needle-maven-add-annotation-processor --&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">annotationProcessorPaths</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>在 File | Settings | Plugins 裡點選 [Browse repositories…] 安裝 <strong>Lombok Plugin</strong>。</p>
+</li>
+<li>
+<p>在 File | Settings | Build, Execution, Deployment | Compiler | Annotation Processors 裡 <strong>Enable annotation processing</strong><br>
+<img src="https://i.imgur.com/ApFMWDM.png" alt=""></p>
+</li>
+<li>
+<p>如此就可以使用下面的 annotation<br>
+* @Data<br>
+* @Slf4j<br>
+* @Delegate<br>
+* <a href="https://projectlombok.org/features/all" target="_blank" rel="noopener">other features</a></p>
+</li>
+</ul>
+<h4><span id="mapstruct">mapstruct</span></h4>
+<ul>
+<li>JHipster 預設已經裝好了</li>
+</ul>
+<h2><span id="reference">Reference</span></h2>
+<ul>
+<li>
+<p><a href="https://www.jhipster.tech/" target="_blank" rel="noopener">https://www.jhipster.tech/</a></p>
+</li>
+<li>
+<p><a href="https://www.infoq.com/minibooks/jhipster-mini-book-5" target="_blank" rel="noopener">The JHipster Mini-Book 5.0 by Matt Raible</a></p>
+</li>
+<li>
+<p>Jhipster 6 demo</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=uQqlO3IGpTU&amp;feature=youtu.be" target="_blank" rel="noopener">https://www.youtube.com/watch?v=uQqlO3IGpTU&amp;feature=youtu.be</a></li>
+<li><a href="https://github.com/mraible/jhipster6-demo" target="_blank" rel="noopener">https://github.com/mraible/jhipster6-demo</a></li>
+</ul>
+</li>
+<li>
+<p>Github:</p>
+<ul>
+<li><a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener">https://github.com/jhipster/generator-jhipster</a></li>
+</ul>
+</li>
+</ul>
+<h3><span id="jhipster-的相關應用和教學">Jhipster 的相關應用和教學</span></h3>
+<ul>
+<li>
+<p><a href="https://developer.okta.com/search/#stq=jhipster" target="_blank" rel="noopener">okta.com</a></p>
+</li>
+<li>
+<p><a href="https://blog.ippon.tech/tag/jhipster/" target="_blank" rel="noopener">blog.ippon.tech</a></p>
+</li>
+</ul>
+<hr>
+<h1><span id="jhipster-registry-微服務用">JHipster Registry - 微服務用</span></h1>
+<p><a href="https://www.jhipster.tech/jhipster-registry/" target="_blank" rel="noopener">https://www.jhipster.tech/jhipster-registry/</a></p>
+<ul>
+<li>It is a an Eureka server, that serves as a discovery server for applications. This is how JHipster handles routing, load balancing and scalability for all applications.</li>
+<li>It is a Spring Cloud Config server, that provide runtime configuration to all applications.</li>
+<li>It is an administration server, with dashboards to monitor and manage applications.</li>
+</ul>
+<hr>
+<h1><span id="json-web-token">JSON Web Token</span></h1>
+<ul>
+<li><a href="https://yami.io/jwt/" target="_blank" rel="noopener">以 JSON Web Token 替代傳統 Token</a></li>
+<li><a href="https://mgleon08.github.io/blog/2018/07/16/jwt/" target="_blank" rel="noopener">JSON Web Token(JWT) 簡單介紹</a></li>
+</ul>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/08/22/hexo-seo/" data-toggle="tooltip" data-placement="top" title="Haxo SEO 設定 (GOOGLE)">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/05/14/flutter-learn-00/" data-toggle="tooltip" data-placement="top" title="Flutter 安裝 (windows 10)">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">專案建立方式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">JHipster Quick Start</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">1. 透過命令列選擇</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">2. 透過 .yo-rc.json 產生專案</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">3. 使用 jdl file 產生專案 (只適用 JHipster 6)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">啟動專案</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">成功啟動的畫面</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">自動產生 db entities, 和前後端程式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">hot deploy</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Creating a Spring service</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Creating DTOs</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">其他工具介紹</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Protractor</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">Swagger UI</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">h2 console</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.1.</span> <span class="toc-nav-text">多語系目錄</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.1.1.</span> <span class="toc-nav-text">修改預設語系</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.2.</span> <span class="toc-nav-text">UI</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.2.1.</span> <span class="toc-nav-text">EditorConfig</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.2.2.</span> <span class="toc-nav-text">Jhipster Online</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.2.3.</span> <span class="toc-nav-text">SecurityUtils - p32</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.3.</span> <span class="toc-nav-text">jhipster 官方對各 ide configuration</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.4.</span> <span class="toc-nav-text">IntelliJ 設定及熱鍵</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.4.1.</span> <span class="toc-nav-text">後端其他會用到的 plugin</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.4.1.1.</span> <span class="toc-nav-text">lombok (需額外裝)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.4.1.2.</span> <span class="toc-nav-text">mapstruct</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.5.</span> <span class="toc-nav-text">Reference</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.5.1.</span> <span class="toc-nav-text">Jhipster 的相關應用和教學</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">JHipster Registry - 微服務用</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">JSON Web Token</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Angular" title="Angular">Angular</a>
+                        
+                          <a class="tag" href="/tags/#JHipster" title="JHipster">JHipster</a>
+                        
+                          <a class="tag" href="/tags/#Spring Boot" title="Spring Boot">Spring Boot</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "timmybeefweb";
+    var disqus_identifier = "https://timmybeef.github.io/2019/06/28/JHipster6/";
+    var disqus_url = "https://timmybeef.github.io/2019/06/28/JHipster6/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/TimLin65070898">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/timmyBeef">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/tim-lin-5b6485171">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Tim Lin 2021 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://beantech.org">BeanTech</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://timmybeef.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://timmybeef.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":null,"autoNumber":"AMS"}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+
+</html>
